@@ -236,6 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3751794487182680363}
   - component: {fileID: -7351418321635416727}
+  - component: {fileID: -5720127139243783999}
   - component: {fileID: 2907659284160533355}
   - component: {fileID: 5933053254739747447}
   m_Layer: 8
@@ -276,6 +277,19 @@ MonoBehaviour:
   _maxHealth: 3
   _isEnemy: 1
   _playerScore: {fileID: 11400000, guid: f1cb6a3b155ff104a94596fb72899e74, type: 2}
+--- !u!114 &-5720127139243783999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4899484233291334946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128a57f486c8900438c901c50e7988df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior
+  _moveSpeed: 2
 --- !u!65 &2907659284160533355
 BoxCollider:
   m_ObjectHideFlags: 0

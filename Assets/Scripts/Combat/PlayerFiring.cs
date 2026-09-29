@@ -13,7 +13,7 @@ public class PlayerFiring : MonoBehaviour
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileSpeed;
 
-    private bool _isFiring = false;
+    private bool _isFiring = true;
     private float _attackTimer;
     private float _attackDelay;
 
