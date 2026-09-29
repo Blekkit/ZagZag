@@ -101,6 +101,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": true,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""ToggleFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""66d24015-8447-4e7a-97ba-3259c5e52532"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -158,6 +168,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e89433c3-1f3f-4674-a6da-e014a8d13718"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -167,6 +188,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Walking
         m_Walking = asset.FindActionMap("Walking", throwIfNotFound: true);
         m_Walking_Move = m_Walking.FindAction("Move", throwIfNotFound: true);
+        m_Walking_ToggleFire = m_Walking.FindAction("ToggleFire", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -248,6 +270,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Walking;
     private List<IWalkingActions> m_WalkingActionsCallbackInterfaces = new List<IWalkingActions>();
     private readonly InputAction m_Walking_Move;
+    private readonly InputAction m_Walking_ToggleFire;
     /// <summary>
     /// Provides access to input actions defined in input action map "Walking".
     /// </summary>
@@ -263,6 +286,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Walking/Move".
         /// </summary>
         public InputAction @Move => m_Wrapper.m_Walking_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Walking/ToggleFire".
+        /// </summary>
+        public InputAction @ToggleFire => m_Wrapper.m_Walking_ToggleFire;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -292,6 +319,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @ToggleFire.started += instance.OnToggleFire;
+            @ToggleFire.performed += instance.OnToggleFire;
+            @ToggleFire.canceled += instance.OnToggleFire;
         }
 
         /// <summary>
@@ -306,6 +336,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @ToggleFire.started -= instance.OnToggleFire;
+            @ToggleFire.performed -= instance.OnToggleFire;
+            @ToggleFire.canceled -= instance.OnToggleFire;
         }
 
         /// <summary>
@@ -353,5 +386,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToggleFire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleFire(InputAction.CallbackContext context);
     }
 }

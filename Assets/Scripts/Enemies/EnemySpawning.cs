@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class EnemySpawning : MonoBehaviour
 {
-    [SerializeField, Header("References")] private GameObject _enemyPrefab;
+    [Header("References")]
+    [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Transform _SpawnCenterPoint;
     [SerializeField] private Transform _playerTF;
 
-    [SerializeField, Header("Settings")] private float _minDistanceFromCenter;
+    [Header("Settings")]
+    [SerializeField] private float _minDistanceFromCenter;
     [SerializeField] private float _maxDistanceFromCenter;
     [SerializeField] private float _minPlayerDistance;
     [SerializeField] private float _spawnDelay;
