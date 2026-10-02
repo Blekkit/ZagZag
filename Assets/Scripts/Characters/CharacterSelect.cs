@@ -29,7 +29,10 @@ public class CharacterSelect : MonoBehaviour
         Time.timeScale = _timeScale;
 
         if (_playerTF != null)
+        {
             _enemySpawner.SetPlayerTransform(_playerTF);
+            _enemySpawner.StartGame();
+        }
     }
 
     private void Awake()

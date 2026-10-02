@@ -16,6 +16,11 @@ public class EnemySpawning : MonoBehaviour
     private float _spawnTimer;
     private bool _hasGameStarted = false;
 
+    public void StartGame()
+    {
+        _hasGameStarted = true;
+    }
+
     public void SetPlayerTransform(Transform playerTransform)
     {
         _playerTF = playerTransform;
@@ -28,7 +33,7 @@ public class EnemySpawning : MonoBehaviour
         while (!validPositionFound)
         {
             float randomDistance = Random.Range(_minDistanceFromCenter, _maxDistanceFromCenter);
-            
+
             Vector2 randomPos = Random.insideUnitCircle.normalized * randomDistance;
             Vector3 offset = new Vector3(randomPos.x, 0f, randomPos.y);
             spawnPosition = _SpawnCenterPoint.position + offset;
@@ -42,17 +47,20 @@ public class EnemySpawning : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemy();
+        //SpawnEnemy();
         _spawnTimer = _spawnDelay;
     }
 
     private void Update()
     {
-        _spawnTimer -= Time.deltaTime;
-        if (_spawnTimer <= 0f)
+        if (_hasGameStarted)
         {
-            SpawnEnemy();
-            _spawnTimer = _spawnDelay;
+            _spawnTimer -= Time.deltaTime;
+            if (_spawnTimer <= 0f)
+            {
+                SpawnEnemy();
+                _spawnTimer = _spawnDelay;
+            }
         }
     }
 }
