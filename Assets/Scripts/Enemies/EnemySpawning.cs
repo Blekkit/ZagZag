@@ -5,7 +5,6 @@ public class EnemySpawning : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Transform _SpawnCenterPoint;
-    [SerializeField] private Transform _playerTF;
 
     [Header("Settings")]
     [SerializeField] private float _minDistanceFromCenter;
@@ -13,7 +12,14 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField] private float _minPlayerDistance;
     [SerializeField] private float _spawnDelay;
 
+    private Transform _playerTF;
     private float _spawnTimer;
+    private bool _hasGameStarted = false;
+
+    public void SetPlayerTransform(Transform playerTransform)
+    {
+        _playerTF = playerTransform;
+    }
 
     private void SpawnEnemy()
     {
