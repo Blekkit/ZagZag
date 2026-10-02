@@ -1,0 +1,58 @@
+using UnityEngine;
+
+public class EnemySpawning : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private Transform _SpawnCenterPoint;
+
+    [Header("Settings")]
+    [SerializeField] private float _minDistanceFromCenter;
+    [SerializeField] private float _maxDistanceFromCenter;
+    [SerializeField] private float _minPlayerDistance;
+    [SerializeField] private float _spawnDelay;
+
+    private Transform _playerTF;
+    private float _spawnTimer;
+    private bool _hasGameStarted = false;
+
+    public void SetPlayerTransform(Transform playerTransform)
+    {
+        _playerTF = playerTransform;
+    }
+
+    private void SpawnEnemy()
+    {
+        Vector3 spawnPosition = Vector3.zero;
+        bool validPositionFound = false;
+        while (!validPositionFound)
+        {
+            float randomDistance = Random.Range(_minDistanceFromCenter, _maxDistanceFromCenter);
+            
+            Vector2 randomPos = Random.insideUnitCircle.normalized * randomDistance;
+            Vector3 offset = new Vector3(randomPos.x, 0f, randomPos.y);
+            spawnPosition = _SpawnCenterPoint.position + offset;
+            if (Vector3.Distance(spawnPosition, _playerTF.position) >= _minPlayerDistance)
+            {
+                validPositionFound = true;
+            }
+        }
+        Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    private void Start()
+    {
+        SpawnEnemy();
+        _spawnTimer = _spawnDelay;
+    }
+
+    private void Update()
+    {
+        _spawnTimer -= Time.deltaTime;
+        if (_spawnTimer <= 0f)
+        {
+            SpawnEnemy();
+            _spawnTimer = _spawnDelay;
+        }
+    }
+}
