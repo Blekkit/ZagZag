@@ -6,8 +6,8 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] private List<GameObject> _players;
     [SerializeField] private GameObject _selectMenu;
     [SerializeField] private EnemySpawning _enemySpawner;
+    [SerializeField] private GamePause _pauseManager;
 
-    private float _timeScale;
     private Transform _playerTF;
 
     public void SelectPlayer(int id)
@@ -26,7 +26,7 @@ public class CharacterSelect : MonoBehaviour
 
         _selectMenu.SetActive(false);
 
-        Time.timeScale = _timeScale;
+        _pauseManager.UnpauseGame();
 
         if (_playerTF != null)
         {
@@ -37,7 +37,6 @@ public class CharacterSelect : MonoBehaviour
 
     private void Awake()
     {
-        _timeScale = Time.timeScale;
-        Time.timeScale = 0f;
+        _pauseManager.PauseGame();
     }
 }

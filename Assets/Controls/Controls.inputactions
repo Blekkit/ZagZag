@@ -25,6 +25,36 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "Ability1",
+                    "type": "Button",
+                    "id": "25a5deac-9360-4a72-9eac-3d7d8aa6f66d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Ability2",
+                    "type": "Button",
+                    "id": "3f068150-9991-488e-bc32-e82b9822aee7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Ability3",
+                    "type": "Button",
+                    "id": "0d918daa-9ee9-42f2-af87-0cee804df6a9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -86,11 +116,44 @@
                 {
                     "name": "",
                     "id": "e89433c3-1f3f-4674-a6da-e014a8d13718",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ToggleFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a84c8b1-cc7f-4b40-9638-66a279ae9d3c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ability1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7628e321-b47d-4f92-a501-e91814792430",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ability2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6608c9a8-3283-4993-a202-10f960713b91",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ability3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

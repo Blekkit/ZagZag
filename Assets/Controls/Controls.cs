@@ -111,6 +111,36 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Ability1"",
+                    ""type"": ""Button"",
+                    ""id"": ""25a5deac-9360-4a72-9eac-3d7d8aa6f66d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""Ability2"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f068150-9991-488e-bc32-e82b9822aee7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""Ability3"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d918daa-9ee9-42f2-af87-0cee804df6a9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -172,11 +202,44 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e89433c3-1f3f-4674-a6da-e014a8d13718"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ToggleFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a84c8b1-cc7f-4b40-9638-66a279ae9d3c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7628e321-b47d-4f92-a501-e91814792430"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6608c9a8-3283-4993-a202-10f960713b91"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -189,6 +252,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Walking = asset.FindActionMap("Walking", throwIfNotFound: true);
         m_Walking_Move = m_Walking.FindAction("Move", throwIfNotFound: true);
         m_Walking_ToggleFire = m_Walking.FindAction("ToggleFire", throwIfNotFound: true);
+        m_Walking_Ability1 = m_Walking.FindAction("Ability1", throwIfNotFound: true);
+        m_Walking_Ability2 = m_Walking.FindAction("Ability2", throwIfNotFound: true);
+        m_Walking_Ability3 = m_Walking.FindAction("Ability3", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -271,6 +337,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IWalkingActions> m_WalkingActionsCallbackInterfaces = new List<IWalkingActions>();
     private readonly InputAction m_Walking_Move;
     private readonly InputAction m_Walking_ToggleFire;
+    private readonly InputAction m_Walking_Ability1;
+    private readonly InputAction m_Walking_Ability2;
+    private readonly InputAction m_Walking_Ability3;
     /// <summary>
     /// Provides access to input actions defined in input action map "Walking".
     /// </summary>
@@ -290,6 +359,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Walking/ToggleFire".
         /// </summary>
         public InputAction @ToggleFire => m_Wrapper.m_Walking_ToggleFire;
+        /// <summary>
+        /// Provides access to the underlying input action "Walking/Ability1".
+        /// </summary>
+        public InputAction @Ability1 => m_Wrapper.m_Walking_Ability1;
+        /// <summary>
+        /// Provides access to the underlying input action "Walking/Ability2".
+        /// </summary>
+        public InputAction @Ability2 => m_Wrapper.m_Walking_Ability2;
+        /// <summary>
+        /// Provides access to the underlying input action "Walking/Ability3".
+        /// </summary>
+        public InputAction @Ability3 => m_Wrapper.m_Walking_Ability3;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -322,6 +403,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleFire.started += instance.OnToggleFire;
             @ToggleFire.performed += instance.OnToggleFire;
             @ToggleFire.canceled += instance.OnToggleFire;
+            @Ability1.started += instance.OnAbility1;
+            @Ability1.performed += instance.OnAbility1;
+            @Ability1.canceled += instance.OnAbility1;
+            @Ability2.started += instance.OnAbility2;
+            @Ability2.performed += instance.OnAbility2;
+            @Ability2.canceled += instance.OnAbility2;
+            @Ability3.started += instance.OnAbility3;
+            @Ability3.performed += instance.OnAbility3;
+            @Ability3.canceled += instance.OnAbility3;
         }
 
         /// <summary>
@@ -339,6 +429,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleFire.started -= instance.OnToggleFire;
             @ToggleFire.performed -= instance.OnToggleFire;
             @ToggleFire.canceled -= instance.OnToggleFire;
+            @Ability1.started -= instance.OnAbility1;
+            @Ability1.performed -= instance.OnAbility1;
+            @Ability1.canceled -= instance.OnAbility1;
+            @Ability2.started -= instance.OnAbility2;
+            @Ability2.performed -= instance.OnAbility2;
+            @Ability2.canceled -= instance.OnAbility2;
+            @Ability3.started -= instance.OnAbility3;
+            @Ability3.performed -= instance.OnAbility3;
+            @Ability3.canceled -= instance.OnAbility3;
         }
 
         /// <summary>
@@ -393,5 +492,26 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleFire(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility3(InputAction.CallbackContext context);
     }
 }
