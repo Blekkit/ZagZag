@@ -24,9 +24,9 @@ public class CharacterSelect : MonoBehaviour
             }
         }
 
-        _selectMenu.SetActive(false);
-
         _pauseManager.UnpauseGame();
+
+        _selectMenu.SetActive(false);
 
         if (_playerTF != null)
         {
@@ -35,7 +35,7 @@ public class CharacterSelect : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         _pauseManager.PauseGame();
     }
