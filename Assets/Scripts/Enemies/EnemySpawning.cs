@@ -1,20 +1,30 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemySpawning : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Transform _SpawnCenterPoint;
+    [SerializeField] private ObjectPool _enemyPool;
+    [SerializeField] private List<Transform> _fixedSpawnPositions;
 
     [Header("Settings")]
+    [SerializeField] private bool _doesUseFixedPositions;
+    [SerializeField] private float _spawnDelay;
+
+    [Header("Fixed Spawning")]
+    [SerializeField] private bool _isUsingRandomSpawnOrder;
+
+    [Header("Random Spawning")]
     [SerializeField] private float _minDistanceFromCenter;
     [SerializeField] private float _maxDistanceFromCenter;
     [SerializeField] private float _minPlayerDistance;
-    [SerializeField] private float _spawnDelay;
 
     private Transform _playerTF;
     private float _spawnTimer;
     private bool _hasGameStarted = false;
+    private int _spawnPositionIndexCounter = 0;
 
     public void StartGame()
     {
@@ -26,7 +36,7 @@ public class EnemySpawning : MonoBehaviour
         _playerTF = playerTransform;
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemyRandomly()
     {
         Vector3 spawnPosition = Vector3.zero;
         bool validPositionFound = false;
@@ -45,6 +55,22 @@ public class EnemySpawning : MonoBehaviour
         Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity);
     }
 
+    private void SpawnEnemyFixed()
+    {
+        if (_fixedSpawnPositions == null || _fixedSpawnPositions.Count <= 0)
+            return;
+
+        if (_isUsingRandomSpawnOrder)
+        {
+            _enemyPool.GetObjectFromPool(_fixedSpawnPositions[Random.Range(0, _fixedSpawnPositions.Count)]);
+        }
+        else
+        {
+            _enemyPool.GetObjectFromPool(_fixedSpawnPositions[_spawnPositionIndexCounter]);
+            _spawnPositionIndexCounter = _fixedSpawnPositions.Count % (_spawnPositionIndexCounter + 1);
+        }
+    }
+
     private void Start()
     {
         //SpawnEnemy();
@@ -58,7 +84,10 @@ public class EnemySpawning : MonoBehaviour
             _spawnTimer -= Time.deltaTime;
             if (_spawnTimer <= 0f)
             {
-                SpawnEnemy();
+                if (_doesUseFixedPositions)
+                    SpawnEnemyFixed();
+                else
+                    SpawnEnemyRandomly();
                 _spawnTimer = _spawnDelay;
             }
         }

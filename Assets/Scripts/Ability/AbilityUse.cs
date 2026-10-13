@@ -17,8 +17,8 @@ public class AbilityUse : MonoBehaviour
         {
             if (_ability1Timer.Value <= 0 && _abilities != null && _abilities.Count >= 1)
             {
-                _abilities[0].UseAbility(_mousePositionProvider.GetMousePosition());
                 _ability1Timer.SetValue(_abilities[0].GetCooldown());
+                _abilities[0].UseAbility(_mousePositionProvider.GetMousePosition());
             }
         }
     }
@@ -29,8 +29,8 @@ public class AbilityUse : MonoBehaviour
         {
             if (_ability2Timer.Value <= 0 && _abilities != null && _abilities.Count >= 2)
             {
-                _abilities[1].UseAbility(_mousePositionProvider.GetMousePosition());
                 _ability2Timer.SetValue(_abilities[1].GetCooldown());
+                _abilities[1].UseAbility(_mousePositionProvider.GetMousePosition());
             }
         }
     }
@@ -41,8 +41,8 @@ public class AbilityUse : MonoBehaviour
         {
             if (_ability3Timer.Value <= 0 && _abilities != null && _abilities.Count >= 3)
             {
-                _abilities[2].UseAbility(_mousePositionProvider.GetMousePosition());
                 _ability3Timer.SetValue(_abilities[2].GetCooldown());
+                _abilities[2].UseAbility(_mousePositionProvider.GetMousePosition());
             }
         }
     }

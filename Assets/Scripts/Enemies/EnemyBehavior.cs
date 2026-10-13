@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 2f;
+    [SerializeField] private int _contactDamage = 1;
 
     private Transform _playerTransform;
 
@@ -36,9 +37,19 @@ public class EnemyBehavior : MonoBehaviour
         transform.position += direction * _moveSpeed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        //Debug.Log($"Enemy collided with {collision.gameObject.name}");
-        collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(1);
+        if (collision.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth pHealth))
+        {
+            if (pHealth.CanBeDamaged)
+                pHealth.TakeDamage(_contactDamage);
+        }
+        
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    //Debug.Log($"Enemy collided with {collision.gameObject.name}");
+    //    collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(1);
+    //}
 }

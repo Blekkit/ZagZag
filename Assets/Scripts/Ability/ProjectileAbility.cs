@@ -17,8 +17,6 @@ public class ProjectileAbility : UsableAbility
 
     public override void UseAbility(Vector3 targetPosition)
     {
-        Debug.Log($"Projectile ability used at position: {targetPosition}");
-
         for (int i = 0; i < _projectileAmount; i++)
         {
             Vector3 direction = targetPosition - _shootOrigin.position;

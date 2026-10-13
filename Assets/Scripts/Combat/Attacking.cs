@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 
 public interface Attacking
 {
-    public void PerformAttack(Vector2 direction);
+    public IEnumerator PerformAttack(Vector2 direction);
 }

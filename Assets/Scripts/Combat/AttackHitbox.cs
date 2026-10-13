@@ -9,6 +9,11 @@ public class AttackHitbox : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform _knockbackOriginPoint;
 
+    public void SetDamage(int damage)
+    {
+        _damage = damage;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameObject collidedGameObject = other.gameObject;

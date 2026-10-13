@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +13,12 @@ public class ProjectileFiring : MonoBehaviour, Attacking
     [Header("Settings")]
     [SerializeField] private float _projectileSpeed;
 
-    public void PerformAttack(Vector2 direction)
+    public IEnumerator PerformAttack(Vector2 direction)
     {
         GameObject projectileObject = _projectilePool.GetObjectFromPool(_shootOrigin);
         Projectile projectile = projectileObject.GetComponent<Projectile>();
-        projectile.Fire(direction, _projectileSpeed); 
+        projectile.Fire(direction, _projectileSpeed);
+        yield return null;
     }
 
     public void PerformAttack(Vector3 direction, int bonusDamage, float spreadAngle, float speedModifier)

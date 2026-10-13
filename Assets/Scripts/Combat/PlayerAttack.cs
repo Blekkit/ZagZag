@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,8 @@ public class PlayerAttack : MonoBehaviour
         if (context.performed)
         {
             _isAttacking = !_isAttacking;
+            if (_isAttacking ) 
+                StartCoroutine(DoBasicAttacks());
         }
     }
 
@@ -40,6 +43,22 @@ public class PlayerAttack : MonoBehaviour
         _characterAttack.PerformAttack(attackDirection);
     }
 
+    private IEnumerator DoAttack()
+    {
+        Vector2 attackDirection = GetMouseDirection();
+        yield return StartCoroutine(_characterAttack.PerformAttack(attackDirection));
+    }
+
+    private IEnumerator DoBasicAttacks()
+    {
+        while (_isAttacking)
+        {
+            yield return StartCoroutine(DoAttack());
+            yield return new WaitForSeconds(_attackDelay);
+        }
+        yield return null;
+    }
+
     private void Start()
     {
         _characterTransform = transform;
@@ -49,21 +68,22 @@ public class PlayerAttack : MonoBehaviour
             _attackDelay = 1;
         else
             _attackDelay = 1 / _attackSpeed;
-        _attackTimer = _attackDelay;
+        //_attackTimer = _attackDelay;
+        StartCoroutine(DoBasicAttacks());
     }
 
-    private void Update()
-    {
-        _attackTimer -= Time.deltaTime;
+    //private void Update()
+    //{
+    //    _attackTimer -= Time.deltaTime;
 
-        if (_attackTimer <= 0)
-        {
-            if (_isAttacking)
-            {
-                Attack();
-            }
+    //    if (_attackTimer <= 0)
+    //    {
+    //        if (_isAttacking)
+    //        {
+    //            Attack();
+    //        }
 
-            _attackTimer += _attackDelay;
-        }
-    }
+    //        _attackTimer += _attackDelay;
+    //    }
+    //}
 }
