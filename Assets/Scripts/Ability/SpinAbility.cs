@@ -13,13 +13,10 @@ public class SpinAbility : UsableAbility
     [SerializeField] private Transform _spinCenter;
     [SerializeField] private AttackHitbox _spinHitbox;
 
-    public override void UseAbility(Vector3 targetPosition)
+    public override IEnumerator UseAbility(Vector3 targetPosition)
     {
-        StartCoroutine(DoSpinAttack());
-    }
+        _isUsingAbility = true;
 
-    private IEnumerator DoSpinAttack()
-    {
         float spinAngle = 0f;
         float spinCounter = 0f;
 
@@ -34,7 +31,8 @@ public class SpinAbility : UsableAbility
         }
 
         _hitboxTransform.gameObject.SetActive(false);
-        //yield return null;
+        _isUsingAbility = false;
+        yield return null;
     }
 
     private void Awake()

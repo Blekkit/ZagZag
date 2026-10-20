@@ -40,3 +40,5 @@ public class CharacterSelect : MonoBehaviour
         _pauseManager.PauseGame();
     }
 }
+
+//todo: reference manager?

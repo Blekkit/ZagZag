@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,12 +16,18 @@ public class ProjectileAbility : UsableAbility
     [SerializeField] private Transform _shootOrigin;
     [SerializeField] private ProjectileFiring _firing;
 
-    public override void UseAbility(Vector3 targetPosition)
+    public override IEnumerator UseAbility(Vector3 targetPosition)
     {
+        _isUsingAbility = true;
+
         for (int i = 0; i < _projectileAmount; i++)
         {
             Vector3 direction = targetPosition - _shootOrigin.position;
+            direction.Normalize();
             _firing.PerformAttack(direction, _projectileBonusDamage, _projectileSpreadAngle, Random.Range(_projectileMinSpeed, _projectileMaxSpeed));
         }
+
+        _isUsingAbility = false;
+        yield return null;
     }
 }

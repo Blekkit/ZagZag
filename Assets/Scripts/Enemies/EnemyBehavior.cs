@@ -46,10 +46,4 @@ public class EnemyBehavior : MonoBehaviour
         }
         
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    //Debug.Log($"Enemy collided with {collision.gameObject.name}");
-    //    collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(1);
-    //}
 }

@@ -141,6 +141,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""testInput"",
+                    ""type"": ""Button"",
+                    ""id"": ""7922c090-d010-47f2-96e3-a89d90aff9ac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -242,6 +252,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Ability3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""baf6ceb8-2790-4bfc-80b3-556ccbeedf1c"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""testInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -255,6 +276,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Walking_Ability1 = m_Walking.FindAction("Ability1", throwIfNotFound: true);
         m_Walking_Ability2 = m_Walking.FindAction("Ability2", throwIfNotFound: true);
         m_Walking_Ability3 = m_Walking.FindAction("Ability3", throwIfNotFound: true);
+        m_Walking_testInput = m_Walking.FindAction("testInput", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -340,6 +362,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Walking_Ability1;
     private readonly InputAction m_Walking_Ability2;
     private readonly InputAction m_Walking_Ability3;
+    private readonly InputAction m_Walking_testInput;
     /// <summary>
     /// Provides access to input actions defined in input action map "Walking".
     /// </summary>
@@ -371,6 +394,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Walking/Ability3".
         /// </summary>
         public InputAction @Ability3 => m_Wrapper.m_Walking_Ability3;
+        /// <summary>
+        /// Provides access to the underlying input action "Walking/testInput".
+        /// </summary>
+        public InputAction @testInput => m_Wrapper.m_Walking_testInput;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -412,6 +439,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability3.started += instance.OnAbility3;
             @Ability3.performed += instance.OnAbility3;
             @Ability3.canceled += instance.OnAbility3;
+            @testInput.started += instance.OnTestInput;
+            @testInput.performed += instance.OnTestInput;
+            @testInput.canceled += instance.OnTestInput;
         }
 
         /// <summary>
@@ -438,6 +468,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability3.started -= instance.OnAbility3;
             @Ability3.performed -= instance.OnAbility3;
             @Ability3.canceled -= instance.OnAbility3;
+            @testInput.started -= instance.OnTestInput;
+            @testInput.performed -= instance.OnTestInput;
+            @testInput.canceled -= instance.OnTestInput;
         }
 
         /// <summary>
@@ -513,5 +546,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAbility3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "testInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTestInput(InputAction.CallbackContext context);
     }
 }
