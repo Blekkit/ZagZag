@@ -9,6 +9,7 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] private GamePause _pauseManager;
 
     private Transform _playerTF;
+    private BasicAttack _playerBasicAttack;
 
     public void SelectPlayer(int id)
     {
@@ -21,6 +22,7 @@ public class CharacterSelect : MonoBehaviour
             else
             {
                 _playerTF = _players[i].transform;
+                _players[i].TryGetComponent<BasicAttack>(out _playerBasicAttack);
             }
         }
 
@@ -33,6 +35,9 @@ public class CharacterSelect : MonoBehaviour
             _enemySpawner.SetPlayerTransform(_playerTF);
             _enemySpawner.StartGame();
         }
+
+        if (_playerBasicAttack != null)
+            _playerBasicAttack.StartBasicAttacks();
     }
 
     private void Start()

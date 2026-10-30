@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class EnemySpawning : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject _enemyPrefab;
+    //[SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Transform _SpawnCenterPoint;
     [SerializeField] private ObjectPool _enemyPool;
     [SerializeField] private List<Transform> _fixedSpawnPositions;
@@ -20,6 +20,7 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField] private float _minDistanceFromCenter;
     [SerializeField] private float _maxDistanceFromCenter;
     [SerializeField] private float _minPlayerDistance;
+    [SerializeField] private Transform _randomSpawnPosHolder;
 
     private Transform _playerTF;
     private float _spawnTimer;
@@ -52,7 +53,8 @@ public class EnemySpawning : MonoBehaviour
                 validPositionFound = true;
             }
         }
-        Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity);
+        _randomSpawnPosHolder.position = spawnPosition;
+        _enemyPool.GetObjectFromPool(_randomSpawnPosHolder);
     }
 
     private void SpawnEnemyFixed()
@@ -73,7 +75,6 @@ public class EnemySpawning : MonoBehaviour
 
     private void Start()
     {
-        //SpawnEnemy();
         _spawnTimer = _spawnDelay;
     }
 

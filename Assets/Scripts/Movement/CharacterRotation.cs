@@ -9,16 +9,17 @@ public class CharacterRotation : MonoBehaviour
         _tf.Rotate(0, rotationYAngle, 0);
     }
 
-    public void Rotate(Vector3 lookAtPosition)
+    public void Rotate(Vector3 lookDirection)
+    {
+        //Vector3 lookVector = new Vector3(lookDirection.x, 0, lookDirection.y);
+        lookDirection.y = 0;
+        transform.rotation = Quaternion.LookRotation(lookDirection);
+    }
+
+    public void LookAt(Vector3 lookAtPosition)
     {
         lookAtPosition.y = 1;
         _tf.LookAt(lookAtPosition);
-    }
-
-    public void Rotate(Vector2 lookDirection)
-    {
-        Vector3 lookVector = new Vector3(lookDirection.x, 0, lookDirection.y);
-        transform.rotation = Quaternion.LookRotation(lookVector);
     }
 
     private void Start()

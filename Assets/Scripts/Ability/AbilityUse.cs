@@ -5,25 +5,16 @@ using System.Collections;
 
 public class AbilityUse : MonoBehaviour
 {
-    [SerializeField] private List<UsableAbility> _abilities;
+    [Header("References")]
     [SerializeField] private MousePosition _mousePositionProvider;
+    [SerializeField] private BasicAttack _basicAttack;
+
+    [Header("Abilities")]
+    [SerializeField] private List<UsableAbility> _abilities;
 
     [SerializeField] private FloatValue _ability1Timer;
     [SerializeField] private FloatValue _ability2Timer;
     [SerializeField] private FloatValue _ability3Timer;
-
-    public void TestInptu(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            Debug.Log("started");
-        }
-
-        if (context.canceled)
-        {
-            Debug.Log("canceled");
-        }
-    }
 
     public void OnAbility1Use(InputAction.CallbackContext context)
     {
@@ -78,6 +69,7 @@ public class AbilityUse : MonoBehaviour
         if (context.canceled)
         {
             _abilities[2].OnButtonReleased();
+            return;
         }
 
         if (_abilities == null || _abilities.Count < 3)
@@ -85,13 +77,13 @@ public class AbilityUse : MonoBehaviour
             Debug.Log("ability invalid");
             return;
         }
-
+        
         if (_ability3Timer.Value > 0 || _abilities[2]._isUsingAbility)
         {
-            Debug.Log("ability on cooldown or being used");
+            Debug.Log($"ability on cooldown or being used on {this.gameObject.name}. {_abilities[2]._isUsingAbility}");
             return;
         }
-
+        
         if (context.started)
         {
             StartCoroutine(UseAbility(_abilities[2], _ability3Timer));
@@ -100,7 +92,9 @@ public class AbilityUse : MonoBehaviour
 
     private IEnumerator UseAbility(UsableAbility ability, FloatValue abilityCooldownTimer)
     {
+        _basicAttack.PauseBasicAttacks();
         yield return StartCoroutine(ability.UseAbility(_mousePositionProvider.GetMousePosition()));
+        _basicAttack.ResumeBasicAttacks();
         yield return StartCoroutine(StartCooldown(abilityCooldownTimer, ability.GetCooldown()));
     }
 

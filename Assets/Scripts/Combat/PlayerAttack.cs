@@ -68,22 +68,6 @@ public class PlayerAttack : MonoBehaviour
             _attackDelay = 1;
         else
             _attackDelay = 1 / _attackSpeed;
-        //_attackTimer = _attackDelay;
         StartCoroutine(DoBasicAttacks());
     }
-
-    //private void Update()
-    //{
-    //    _attackTimer -= Time.deltaTime;
-
-    //    if (_attackTimer <= 0)
-    //    {
-    //        if (_isAttacking)
-    //        {
-    //            Attack();
-    //        }
-
-    //        _attackTimer += _attackDelay;
-    //    }
-    //}
 }

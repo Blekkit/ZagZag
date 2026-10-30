@@ -3,17 +3,18 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] private GameObject _pooledObject;
+    [SerializeField] private PoolableObject _pooledObject;
     [SerializeField] private int _startingPoolSize = 10;
     [SerializeField] private Transform _parentTransform;
 
-    private Queue<GameObject> _objectPool = new Queue<GameObject>();
+    private Queue<PoolableObject> _objectPool = new Queue<PoolableObject>();
 
     public GameObject GetObjectFromPool(Transform position)
     {
         if (_objectPool.Count > 0)
         {
-            GameObject obj = _objectPool.Dequeue();
+            PoolableObject poolObj = _objectPool.Dequeue();
+            GameObject obj = poolObj.GetGameObject();
             obj.transform.position = position.position;
             obj.transform.rotation = position.rotation;
             obj.SetActive(true);
@@ -26,9 +27,9 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public void ReturnObjectToPool(GameObject obj)
+    public void ReturnObjectToPool(PoolableObject obj)
     {
-        obj.SetActive(false);
+        obj.GetGameObject().SetActive(false);
         _objectPool.Enqueue(obj);
     }
 
@@ -36,9 +37,11 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            GameObject obj = Instantiate(_pooledObject, _parentTransform);
+            GameObject obj = Instantiate(_pooledObject.GetGameObject(), _parentTransform);
             obj.SetActive(false);
-            _objectPool.Enqueue(obj);
+            PoolableObject poolObj = obj.GetComponent<PoolableObject>();
+            poolObj.SetPool(this);
+            _objectPool.Enqueue(poolObj);
         }
     }
 

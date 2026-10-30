@@ -4,7 +4,7 @@ using UnityEngine;
 public class JesterUlt : UsableAbility
 {
     [Header("Charge Settings")]
-    [SerializeField] private float _minDmage;
+    [SerializeField] private float _minDamage;
     [SerializeField] private float _maxDamage;
     [SerializeField] private float _minRadius;
     [SerializeField] private float _maxRadius;
@@ -15,12 +15,15 @@ public class JesterUlt : UsableAbility
     [SerializeField] private float _windupTime;
     [SerializeField] private float _activeTime;
     [SerializeField] private float _cooldownTime;
+    [SerializeField] private EHitboxShape _hitboxShape = EHitboxShape.circle;
+    [SerializeField] private Vector3 _hitboxPositionOffset = Vector3.zero;
 
     [Header("References")]
-    [SerializeField] private AttackHitbox _hitbox;
-    [SerializeField] private Transform _attackParent;
-    [SerializeField] private GameObject _indicator;
+    [SerializeField] private MeleeAttack _attack;
+    [SerializeField] private GameObject _jesterUlt;
     [SerializeField] private Move _characterMovement;
+
+    private MeleeAttackData _attackData;
 
     public override IEnumerator UseAbility(Vector3 targetPosition)
     {
@@ -28,28 +31,42 @@ public class JesterUlt : UsableAbility
         _isHoldingButton = true;
 
         float chargeTimer = 0f;
-        _indicator.SetActive(true);
+        _jesterUlt.SetActive(true);
         _characterMovement.SetTempSpeed(_chargeMoveSpeed);
+        
+        float currentRadius = _minRadius;
+        float currentDamage = _minDamage;
+        float chargeRatio = 0f;
+
         //charging loop
         while (_isHoldingButton)
         {
-            float chargeRatio = Mathf.Clamp01(chargeTimer / _chargingTime);
-            float currentDamage = Mathf.Lerp(_minDmage, _maxDamage, chargeRatio);
-            float currentRadius = Mathf.Lerp(_minRadius, _maxRadius, chargeRatio);
-            _hitbox.SetDamage((int)currentDamage);
-            _attackParent.localScale = new Vector3(currentRadius, 1, currentRadius);
+            chargeRatio = Mathf.Clamp01(chargeTimer / _chargingTime);
+            currentDamage = Mathf.Lerp(_minDamage, _maxDamage, chargeRatio);
+            currentRadius = Mathf.Lerp(_minRadius, _maxRadius, chargeRatio);
+            _jesterUlt.transform.localScale = new Vector3(currentRadius, 1, currentRadius);
             chargeTimer += Time.deltaTime;
             yield return null;
         }
 
-        yield return new WaitForSeconds(_windupTime);
-        _indicator.SetActive(false);
-        _hitbox.gameObject.SetActive(true);
-        yield return new WaitForSeconds(_activeTime);
-        _hitbox.gameObject.SetActive(false);
-        yield return new WaitForSeconds(_cooldownTime);
-        _attackParent.localScale = new Vector3(_minRadius, 1, _minRadius);
-        _isUsingAbility = false;
+        //attack
+        _attackData.Damage = (int)currentDamage;
+        _attackData.HitboxScale = new Vector2(currentRadius, currentRadius);
+        _jesterUlt.SetActive(false);
+        
+        yield return StartCoroutine(_attack.PerformAttack(_attackData));
+
         _characterMovement.ResetSpeed();
+        _isUsingAbility = false;
+    }
+
+    private void Start()
+    {
+        _attackData = new MeleeAttackData();
+        _attackData.WindupTime = _windupTime;
+        _attackData.ActiveTime = _activeTime;
+        _attackData.WinddownTime = _cooldownTime;
+        _attackData.HitboxShape = _hitboxShape;
+        _attackData.AttackPositionOffset = _hitboxPositionOffset;
     }
 }

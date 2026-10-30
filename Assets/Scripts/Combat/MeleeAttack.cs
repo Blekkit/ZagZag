@@ -1,33 +1,63 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class MeleeAttack : MonoBehaviour, Attacking
+public class MeleeAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject _attackHitBox;
+    public UnityEvent OnAttackSwing;
 
-    [Header("Settings")]
-    [SerializeField] private float _windupTime = 0f;
-    [SerializeField] private float _attackDuration = 1f;
-    [SerializeField] private float _cooldownDuration = 0.5f;
+    [SerializeField] private AttackHitbox _squareAttackHitbox;
+    [SerializeField] private AttackHitbox _circleAttackHitbox;
+    [SerializeField] private Transform _hitboxParent;
 
-    //private bool _isHitboxOn = false;
     public bool CanAttack { get; private set; } = true;
 
-    public IEnumerator PerformAttack(Vector2 direction)
+    public void CancelAttack()
     {
-        //_isHitboxOn = !_isHitboxOn;
-        //_attackHitBox.SetActive(_isHitboxOn);
-        yield return StartCoroutine(DoMeleeAttack());
+        StopAllCoroutines();
+        _hitboxParent.localPosition = Vector3.zero;
+        _squareAttackHitbox.gameObject.SetActive(false);
+        _circleAttackHitbox.gameObject.SetActive(false);
+        CanAttack = true;
     }
 
-    private IEnumerator DoMeleeAttack()
+    public IEnumerator PerformAttack(MeleeAttackData data)
     {
+        AttackHitbox currentHitbox;
+        switch(data.HitboxShape)
+        {
+            case EHitboxShape.square:
+                currentHitbox = _squareAttackHitbox;
+                break;
+
+            case EHitboxShape.circle:
+                currentHitbox = _circleAttackHitbox;
+                break;
+
+            default:
+                currentHitbox = _squareAttackHitbox;
+                break;
+        }
+
+        //attack windup step
         CanAttack = false;
-        yield return new WaitForSeconds(_windupTime);
-        _attackHitBox.SetActive(true);
-        yield return new WaitForSeconds(_attackDuration);
-        _attackHitBox.SetActive(false);
-        yield return new WaitForSeconds(_cooldownDuration);
+        currentHitbox.SetDamage(data.Damage);
+        _hitboxParent.localScale = new Vector3(data.HitboxScale.x, 1, data.HitboxScale.y);
+       
+        _hitboxParent.localPosition = data.AttackPositionOffset;
+        yield return new WaitForSeconds(data.WindupTime);
+        
+        //attack active step        DAMAGE STEP
+        currentHitbox.gameObject.SetActive(true);
+        OnAttackSwing?.Invoke();
+        yield return new WaitForSeconds(data.ActiveTime);
+        
+        //attack cooldown step
+        currentHitbox.gameObject.SetActive(false);
+        yield return new WaitForSeconds(data.WinddownTime);
+        
+        //after attack finished
         CanAttack = true;
+        _hitboxParent.localPosition = Vector3.zero;
     }
 }

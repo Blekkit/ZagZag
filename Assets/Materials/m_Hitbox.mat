@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hitbox
+  m_Name: m_Hitbox
   m_Shader: {fileID: -6465566751694194690, guid: c53017d83fa1a7c428358f14d0e18a02, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

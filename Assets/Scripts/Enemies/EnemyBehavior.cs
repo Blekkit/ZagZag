@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public class EnemyBehavior : PoolableObject
 {
     [SerializeField] private float _moveSpeed = 2f;
     [SerializeField] private int _contactDamage = 1;
