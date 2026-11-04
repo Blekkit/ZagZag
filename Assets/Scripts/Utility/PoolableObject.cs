@@ -2,11 +2,14 @@ using UnityEngine;
 
 public abstract class PoolableObject : MonoBehaviour
 {
+    public int ObjectTypeID { get; private set; }
+
     private ObjectPool _originPool;
 
-    public void SetPool(ObjectPool pool)
+    public void SetPool(ObjectPool pool, int objectTypeID)
     {
         _originPool = pool;
+        ObjectTypeID = objectTypeID;
     }
 
     public void ReturnToPool()

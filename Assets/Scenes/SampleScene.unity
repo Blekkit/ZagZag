@@ -4806,7 +4806,7 @@ GameObject:
   - component: {fileID: 1350147129}
   - component: {fileID: 1350147128}
   m_Layer: 7
-  m_Name: Player_Melee_Object
+  m_Name: Player_Knight_Object
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6187,8 +6187,10 @@ GameObject:
   - component: {fileID: 1805123970}
   - component: {fileID: 1805123972}
   - component: {fileID: 1805123971}
+  - component: {fileID: 1805123974}
+  - component: {fileID: 1805123973}
   m_Layer: 7
-  m_Name: Player_Ranged_Object
+  m_Name: Player_Jester_Object
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6407,20 +6409,96 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805123960}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6b6278d4823e2e4c828719339eebee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbilityUse
   _mousePositionProvider: {fileID: 235964735}
-  _basicAttack: {fileID: 0}
+  _basicAttack: {fileID: 1805123969}
   _abilities:
-  - {fileID: 0}
+  - {fileID: 1805123974}
   - {fileID: 0}
   - {fileID: 1805123971}
   _ability1Timer: {fileID: 11400000, guid: cbd26af2a05fa784ebd0f9c1a6db4028, type: 2}
   _ability2Timer: {fileID: 11400000, guid: 169b014b5ecbe574db37b0c9a3492a48, type: 2}
   _ability3Timer: {fileID: 11400000, guid: c1982418281c7fc46bc558f902d408f0, type: 2}
+--- !u!114 &1805123973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805123960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdd53b315962704281651b1fc8724c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileAbility
+  AbilityCooldown: 0
+  _rangedData:
+    ProjectileAmount: 0
+    DelayBetweenShots: 0
+    ProjectileDamage: 0
+    ProjectileSpreadAngle: 0
+    MinProjectileSpeed: 0
+    MaxProjectileSpeed: 0
+    PierceAmount: 0
+    ProjectileScale: {x: 0, y: 0, z: 0}
+    TargetDirection: {x: 0, y: 0, z: 0}
+    AttackCooldown: 0
+  _hasMeleeHitbox: 0
+  _doesFireOnMeleeSwing: 1
+  _meleeAttackData:
+    Damage: 0
+    HitboxScale: {x: 0, y: 0}
+    HitboxShape: 0
+    AttackPositionOffset: {x: 0, y: 0, z: 0}
+    WindupTime: 0
+    ActiveTime: 0
+    WinddownTime: 0
+    AttackCooldown: 0
+  _shootOrigin: {fileID: 0}
+  _rangedAttack: {fileID: 0}
+  _meleeAttack: {fileID: 0}
+--- !u!114 &1805123974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805123960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdd53b315962704281651b1fc8724c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileAbility
+  AbilityCooldown: 5
+  _rangedData:
+    ProjectileAmount: 1
+    DelayBetweenShots: 0
+    ProjectileDamage: 1
+    ProjectileSpreadAngle: 0
+    MinProjectileSpeed: 10
+    MaxProjectileSpeed: 10
+    PierceAmount: 0
+    ProjectileScale: {x: 2, y: 1, z: 2}
+    TargetDirection: {x: 0, y: 0, z: 0}
+    AttackCooldown: 0
+  _hasMeleeHitbox: 0
+  _doesFireOnMeleeSwing: 0
+  _meleeAttackData:
+    Damage: 0
+    HitboxScale: {x: 0, y: 0}
+    HitboxShape: 0
+    AttackPositionOffset: {x: 0, y: 0, z: 0}
+    WindupTime: 0
+    ActiveTime: 0
+    WinddownTime: 0
+    AttackCooldown: 0
+  _shootOrigin: {fileID: 466253531}
+  _rangedAttack: {fileID: 1805123968}
+  _meleeAttack: {fileID: 1805123970}
 --- !u!1 &1824365408
 GameObject:
   m_ObjectHideFlags: 0

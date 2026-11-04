@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class EnemySpawning : MonoBehaviour
 {
     [Header("References")]
-    //[SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Transform _SpawnCenterPoint;
     [SerializeField] private ObjectPool _enemyPool;
     [SerializeField] private List<Transform> _fixedSpawnPositions;
@@ -13,14 +12,16 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField] private bool _doesUseFixedPositions;
     [SerializeField] private float _spawnDelay;
 
-    [Header("Fixed Spawning")]
+    [Header("Fixed Position Spawning")]
     [SerializeField] private bool _isUsingRandomSpawnOrder;
 
-    [Header("Random Spawning")]
+    [Header("Random Position Spawning")]
     [SerializeField] private float _minDistanceFromCenter;
     [SerializeField] private float _maxDistanceFromCenter;
     [SerializeField] private float _minPlayerDistance;
     [SerializeField] private Transform _randomSpawnPosHolder;
+
+    public int EnemyTypeID { get; private set; } = 0;
 
     private Transform _playerTF;
     private float _spawnTimer;
@@ -35,6 +36,11 @@ public class EnemySpawning : MonoBehaviour
     public void SetPlayerTransform(Transform playerTransform)
     {
         _playerTF = playerTransform;
+    }
+
+    public void SetEnemyType(int enemyTypeID)
+    {
+        EnemyTypeID = enemyTypeID;
     }
 
     private void SpawnEnemyRandomly()
@@ -54,7 +60,7 @@ public class EnemySpawning : MonoBehaviour
             }
         }
         _randomSpawnPosHolder.position = spawnPosition;
-        _enemyPool.GetObjectFromPool(_randomSpawnPosHolder);
+        _enemyPool.GetObjectFromPool(_randomSpawnPosHolder, EnemyTypeID);
     }
 
     private void SpawnEnemyFixed()
@@ -64,11 +70,11 @@ public class EnemySpawning : MonoBehaviour
 
         if (_isUsingRandomSpawnOrder)
         {
-            _enemyPool.GetObjectFromPool(_fixedSpawnPositions[Random.Range(0, _fixedSpawnPositions.Count)]);
+            _enemyPool.GetObjectFromPool(_fixedSpawnPositions[Random.Range(0, _fixedSpawnPositions.Count)], EnemyTypeID);
         }
         else
         {
-            _enemyPool.GetObjectFromPool(_fixedSpawnPositions[_spawnPositionIndexCounter]);
+            _enemyPool.GetObjectFromPool(_fixedSpawnPositions[_spawnPositionIndexCounter], EnemyTypeID);
             _spawnPositionIndexCounter = _fixedSpawnPositions.Count % (_spawnPositionIndexCounter + 1);
         }
     }

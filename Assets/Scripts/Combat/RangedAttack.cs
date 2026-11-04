@@ -8,6 +8,13 @@ public class RangedAttack : MonoBehaviour
 
     public bool CanAttack { get; private set; } = true;
 
+    //private int _projectileTypeID = 0;
+
+    //public void SetProjectileType(int projectileTypeID)
+    //{
+    //    _projectileTypeID = projectileTypeID;
+    //}
+
     public void CancelAttack()
     {
         StopAllCoroutines();
@@ -20,7 +27,7 @@ public class RangedAttack : MonoBehaviour
 
         for (int i = 0; i < data.ProjectileAmount; i++)
         {
-            GameObject projectileObject = _projectilePool.GetObjectFromPool(_shootOrigin);
+            GameObject projectileObject = _projectilePool.GetObjectFromPool(_shootOrigin, data.ProjectileTypeID);
             if (projectileObject.TryGetComponent<Projectile>(out Projectile projectile))
             {
                 //setup projectile stats

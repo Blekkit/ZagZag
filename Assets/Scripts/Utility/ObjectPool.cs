@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] private PoolableObject _pooledObject;
+    [SerializeField] private List<PoolableObject> _pooledObjects;
     [SerializeField] private int _startingPoolSize = 10;
     [SerializeField] private Transform _parentTransform;
 
-    private Queue<PoolableObject> _objectPool = new Queue<PoolableObject>();
+    private List<Queue<PoolableObject>> _objectPool = new List<Queue<PoolableObject>>();
 
-    public GameObject GetObjectFromPool(Transform position)
+    private const int INCREASE_POOL_SIZE = 1;
+
+    public GameObject GetObjectFromPool(Transform position, int objectTypeID)
     {
-        if (_objectPool.Count > 0)
+        if (_objectPool[objectTypeID].Count > 0)
         {
-            PoolableObject poolObj = _objectPool.Dequeue();
+            PoolableObject poolObj = _objectPool[objectTypeID].Dequeue();
             GameObject obj = poolObj.GetGameObject();
             obj.transform.position = position.position;
             obj.transform.rotation = position.rotation;
@@ -22,31 +24,34 @@ public class ObjectPool : MonoBehaviour
         }
         else
         {
-            AddObjectToPool(1);
-            return GetObjectFromPool(position);
+            AddObjectToPool(INCREASE_POOL_SIZE, objectTypeID);
+            return GetObjectFromPool(position, objectTypeID);
         }
     }
 
     public void ReturnObjectToPool(PoolableObject obj)
     {
         obj.GetGameObject().SetActive(false);
-        _objectPool.Enqueue(obj);
+        _objectPool[obj.ObjectTypeID].Enqueue(obj);
     }
 
-    private void AddObjectToPool(int amount)
+    private void AddObjectToPool(int amount, int objectTypeID)
     {
         for (int i = 0; i < amount; i++)
         {
-            GameObject obj = Instantiate(_pooledObject.GetGameObject(), _parentTransform);
+            GameObject obj = Instantiate(_pooledObjects[objectTypeID].GetGameObject(), _parentTransform);
             obj.SetActive(false);
             PoolableObject poolObj = obj.GetComponent<PoolableObject>();
-            poolObj.SetPool(this);
-            _objectPool.Enqueue(poolObj);
+            poolObj.SetPool(this, objectTypeID);
+            _objectPool[objectTypeID].Enqueue(poolObj);
         }
     }
 
     private void Awake()
     {
-        AddObjectToPool(_startingPoolSize);
+        for (int i = 0; i < _pooledObjects.Count; i++)
+        {
+            AddObjectToPool(_startingPoolSize, i);
+        }
     }
 }
