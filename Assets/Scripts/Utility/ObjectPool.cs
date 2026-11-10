@@ -13,6 +13,11 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetObjectFromPool(Transform position, int objectTypeID)
     {
+        while (_objectPool.Count <= objectTypeID)
+        {
+            _objectPool.Add(new Queue<PoolableObject>());
+        }
+
         if (_objectPool[objectTypeID].Count > 0)
         {
             PoolableObject poolObj = _objectPool[objectTypeID].Dequeue();
@@ -43,6 +48,10 @@ public class ObjectPool : MonoBehaviour
             obj.SetActive(false);
             PoolableObject poolObj = obj.GetComponent<PoolableObject>();
             poolObj.SetPool(this, objectTypeID);
+            while (_objectPool.Count <= objectTypeID)
+            {
+                _objectPool.Add(new Queue<PoolableObject>());
+            }
             _objectPool[objectTypeID].Enqueue(poolObj);
         }
     }

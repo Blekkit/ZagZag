@@ -15,7 +15,7 @@ public class SpinAbility : UsableAbility
 
     public override IEnumerator UseAbility(Vector3 targetPosition)
     {
-        _isUsingAbility = true;
+        IsUsingAbility = true;
 
         float spinAngle = 0f;
         float spinCounter = 0f;
@@ -31,7 +31,7 @@ public class SpinAbility : UsableAbility
         }
 
         _hitboxTransform.gameObject.SetActive(false);
-        _isUsingAbility = false;
+        IsUsingAbility = false;
         yield return null;
     }
 

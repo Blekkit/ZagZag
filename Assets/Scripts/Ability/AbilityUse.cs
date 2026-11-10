@@ -16,109 +16,92 @@ public class AbilityUse : MonoBehaviour
     [SerializeField] private FloatValue _ability2Timer;
     [SerializeField] private FloatValue _ability3Timer;
 
+    private const int ZERO = 0;
+    private const int ABILITY_1_ID = 0;
+    private const int ABILITY_2_ID = 1;
+    private const int ABILITY_3_ID = 2;
+
+    private bool _isUsingAbility = false;
+
+    #region callbacks
     public void OnAbility1Use(InputAction.CallbackContext context)
     {
-        if (_abilities == null || _abilities.Count < 1)
-        {
-            Debug.Log("ability invalid");
-            return;
-        }
-
-        if (_ability1Timer.Value > 0 || _abilities[0]._isUsingAbility)
-        {
-            Debug.Log("ability on cooldown or being used");
-            return;
-        }
-
-        if (context.started)
-        {
-            StartCoroutine(UseAbility(_abilities[0], _ability1Timer));
-        }
-        else if (context.canceled)
-        {
-            _abilities[0].OnButtonReleased();
-        }
+        OnAbilityUse(ABILITY_1_ID, _ability1Timer, context);
     }
 
     public void OnAbility2Use(InputAction.CallbackContext context)
     {
-        if (_abilities == null || _abilities.Count < 2)
-        {
-            Debug.Log("ability invalid");
-            return;
-        }
-
-        if (_ability2Timer.Value > 0 || _abilities[1]._isUsingAbility)
-        {
-            Debug.Log("ability on cooldown or being used");
-            return;
-        }
-
-        if (context.started)
-        {
-            StartCoroutine(UseAbility(_abilities[1], _ability2Timer));
-        }
-        else if (context.canceled)
-        {
-            _abilities[1].OnButtonReleased();
-        }
+        OnAbilityUse(ABILITY_2_ID, _ability2Timer, context);
     }
 
     public void OnAbility3Use(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        OnAbilityUse(ABILITY_3_ID, _ability3Timer, context);
+    }
+    #endregion
+
+    private void OnAbilityUse(int abilityID, FloatValue abilityCooldownTimer, InputAction.CallbackContext context)
+    {
+        if (_abilities == null || _abilities.Count <= abilityID)
         {
-            _abilities[2].OnButtonReleased();
+            Debug.Log("Ability not assigned.");
             return;
         }
 
-        if (_abilities == null || _abilities.Count < 3)
+        if (context.canceled)
         {
-            Debug.Log("ability invalid");
+            _abilities[abilityID].OnButtonReleased();
+        }
+
+        if (abilityCooldownTimer.Value > ZERO)
+        {
+            Debug.Log("Ability on cooldown.");
             return;
         }
-        
-        if (_ability3Timer.Value > 0 || _abilities[2]._isUsingAbility)
+
+        if (_isUsingAbility)
         {
-            Debug.Log($"ability on cooldown or being used on {this.gameObject.name}. {_abilities[2]._isUsingAbility}");
+            Debug.Log("Other ability is being used.");
             return;
         }
-        
+
         if (context.started)
         {
-            StartCoroutine(UseAbility(_abilities[2], _ability3Timer));
+            StartCoroutine(UseAbility(_abilities[abilityID], abilityCooldownTimer));
         }
     }
 
     private IEnumerator UseAbility(UsableAbility ability, FloatValue abilityCooldownTimer)
     {
+        _isUsingAbility = true;
         _basicAttack.PauseBasicAttacks();
         yield return StartCoroutine(ability.UseAbility(_mousePositionProvider.GetMousePosition()));
         _basicAttack.ResumeBasicAttacks();
-        yield return StartCoroutine(StartCooldown(abilityCooldownTimer, ability.GetCooldown()));
+        _isUsingAbility = false;
+        yield return StartCoroutine(DoCooldown(abilityCooldownTimer, ability.GetCooldown()));
     }
 
-    private IEnumerator StartCooldown(FloatValue cooldownTimer, int cooldown)
+    private IEnumerator DoCooldown(FloatValue cooldownTimer, int cooldown)
     {
         cooldownTimer.SetValue(cooldown);
 
-        while (cooldownTimer.Value > 0)
+        while (cooldownTimer.Value > ZERO)
         {
-            cooldownTimer.SetValue(Mathf.Max(0, cooldownTimer.Value - Time.deltaTime));
+            cooldownTimer.SetValue(Mathf.Max(ZERO, cooldownTimer.Value - Time.deltaTime));
             yield return null;
         }
 
-        cooldownTimer.SetValue(0);
+        cooldownTimer.SetValue(ZERO);
     }
 
     private void Awake()
     {
-        _ability1Timer.SetMaxValue(_abilities[0].GetCooldown());
-        _ability2Timer.SetMaxValue(_abilities[1].GetCooldown());
-        _ability3Timer.SetMaxValue(_abilities[2].GetCooldown());
+        _ability1Timer.SetMaxValue(_abilities[ABILITY_1_ID].GetCooldown());
+        _ability2Timer.SetMaxValue(_abilities[ABILITY_2_ID].GetCooldown());
+        _ability3Timer.SetMaxValue(_abilities[ABILITY_3_ID].GetCooldown());
 
-        _ability1Timer.SetValue(0);
-        _ability2Timer.SetValue(0);
-        _ability3Timer.SetValue(0);
+        _ability1Timer.SetValue(ZERO);
+        _ability2Timer.SetValue(ZERO);
+        _ability3Timer.SetValue(ZERO);
     }
 }

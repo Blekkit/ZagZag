@@ -3,9 +3,11 @@ using UnityEngine;
 
 public abstract class UsableAbility : MonoBehaviour
 {
+    public string AbilityName;
+
     [SerializeField] private int AbilityCooldown;
 
-    public bool _isUsingAbility {  get; protected set; }
+    public bool IsUsingAbility {  get; protected set; }
 
     protected bool _isHoldingButton = false;
 

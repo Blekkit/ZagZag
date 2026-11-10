@@ -1,19 +1,32 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Move : MonoBehaviour
 {
     [SerializeField] private float _baseMoveSpeed = 5f;
 
+    [Header("Skating")]
+    [SerializeField] public bool _isUsingScateMovement = false;
+    [SerializeField] private float _timeBetweenScates = .3f;
+    [SerializeField] private ScateData _scateData;
+
+    public bool IsUsingScateMovement => _isUsingScateMovement;
+
     private Rigidbody _rb;
     private Vector2 _moveInput;
     private float _currentMoveSpeed;
+    private bool _canMove = true;
+    private bool _isMoving = false;
 
     public void OnMove(InputAction.CallbackContext context)
     {
         _moveInput = context.ReadValue<Vector2>();
     }
 
+    #region setters
     public void SetMoveSpeedModifier(float speedModidfier)
     {
         _currentMoveSpeed *= speedModidfier;
@@ -29,10 +42,54 @@ public class Move : MonoBehaviour
         _currentMoveSpeed = _baseMoveSpeed;
     }
 
+    public void StopScateMovement()
+    {
+        _isMoving = false;
+        StopCoroutine(ScateMovementLoop());
+    }
+    #endregion
+
+    public IEnumerator Scate(ScateData data)
+    {
+        Debug.Log($"Scate started by {gameObject.name}");
+        float scateTimer = 0;
+        float turnAngle = 0;
+        Vector3 moveVector = Vector3.zero;
+        _canMove = false;
+        while (scateTimer <= data.ScateTime)
+        {
+            scateTimer += Time.deltaTime;
+            _rb.linearVelocity = data.Forward * data.ScateSpeed;
+            moveVector = new Vector3(_moveInput.x, 0, _moveInput.y);
+            turnAngle = Vector3.SignedAngle(data.Forward, moveVector, Vector3.up);
+            data.Forward = Quaternion.AngleAxis(turnAngle, Vector3.up) * data.Forward;
+            yield return null;
+        }
+        Debug.Log($"Scate ended by {gameObject.name}");
+    }
+
+    public IEnumerator ScateMovementLoop()
+    {
+        while (_isMoving)
+        {
+            yield return StartCoroutine(Scate(_scateData));
+            yield return new WaitForSeconds(_timeBetweenScates);
+        }
+    }
+
+    public void StartScateLoop()
+    {
+        _isMoving = true;
+        StartCoroutine(ScateMovementLoop());
+    }
+
     private void Update()
     {
-        Vector3 move = new Vector3(_moveInput.x, 0f, _moveInput.y) * _currentMoveSpeed * Time.deltaTime;
-        transform.Translate(move, Space.World);
+        if (!_isUsingScateMovement && _canMove)
+        {
+            Vector3 move = new Vector3(_moveInput.x, 0f, _moveInput.y) * _currentMoveSpeed * Time.deltaTime;
+            transform.Translate(move, Space.World);
+        }
     }
 
     private void Start()

@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+//using System.Collections.Generic;
+//using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
 
 public class ProjectileAbility : UsableAbility
 {
@@ -17,14 +17,13 @@ public class ProjectileAbility : UsableAbility
     [Header("References")]
     [SerializeField] private Transform _shootOrigin;
     [SerializeField] private RangedAttack _rangedAttack;
-    //[SerializeField] private ProjectileFiring _firing;
     [SerializeField] private MeleeAttack _meleeAttack;
 
     private Vector3 _targetPosition;
 
     public override IEnumerator UseAbility(Vector3 targetPosition)
     {
-        _isUsingAbility = true;
+        IsUsingAbility = true;
         _targetPosition = targetPosition;
 
         //melee windup
@@ -51,7 +50,7 @@ public class ProjectileAbility : UsableAbility
             }
         }
 
-        _isUsingAbility = false;
+        IsUsingAbility = false;
         yield return null;
     }
 

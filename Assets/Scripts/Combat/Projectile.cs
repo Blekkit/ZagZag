@@ -67,9 +67,9 @@ public class Projectile : PoolableObject
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.TryGetComponent<Health>(out Health targetHealth))
+        if (collider.gameObject.TryGetComponent<Health>(out Health targetHealth))
         {
             targetHealth.TakeDamage(_damage);
 
@@ -87,4 +87,9 @@ public class Projectile : PoolableObject
             Destroy();
         }
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+        
+    //}
 }
