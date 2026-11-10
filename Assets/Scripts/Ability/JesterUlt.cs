@@ -20,18 +20,19 @@ public class JesterUlt : UsableAbility
 
     [Header("References")]
     [SerializeField] private MeleeAttack _attack;
-    [SerializeField] private GameObject _jesterUlt;
+    [SerializeField] private GameObject _hitboxIndicator;
+    [SerializeField] private Transform _idicatorParent;
     [SerializeField] private Move _characterMovement;
 
     private MeleeAttackData _attackData;
 
     public override IEnumerator UseAbility(Vector3 targetPosition)
     {
-        _isUsingAbility = true;
+        IsUsingAbility = true;
         _isHoldingButton = true;
 
         float chargeTimer = 0f;
-        _jesterUlt.SetActive(true);
+        _hitboxIndicator.SetActive(true);
         _characterMovement.SetTempSpeed(_chargeMoveSpeed);
         
         float currentRadius = _minRadius;
@@ -44,7 +45,7 @@ public class JesterUlt : UsableAbility
             chargeRatio = Mathf.Clamp01(chargeTimer / _chargingTime);
             currentDamage = Mathf.Lerp(_minDamage, _maxDamage, chargeRatio);
             currentRadius = Mathf.Lerp(_minRadius, _maxRadius, chargeRatio);
-            _jesterUlt.transform.localScale = new Vector3(currentRadius, 1, currentRadius);
+            _idicatorParent.localScale = new Vector3(currentRadius, 1, currentRadius);
             chargeTimer += Time.deltaTime;
             yield return null;
         }
@@ -52,12 +53,13 @@ public class JesterUlt : UsableAbility
         //attack
         _attackData.Damage = (int)currentDamage;
         _attackData.HitboxScale = new Vector2(currentRadius, currentRadius);
-        _jesterUlt.SetActive(false);
+        _hitboxIndicator.SetActive(false);
         
         yield return StartCoroutine(_attack.PerformAttack(_attackData));
 
+        //_hitboxIndicator.transform.localScale = new Vector3(1, 1, 1);
         _characterMovement.ResetSpeed();
-        _isUsingAbility = false;
+        IsUsingAbility = false;
     }
 
     private void Start()
@@ -70,3 +72,4 @@ public class JesterUlt : UsableAbility
         _attackData.AttackPositionOffset = _hitboxPositionOffset;
     }
 }
+//todo: dmg fix

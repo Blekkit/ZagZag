@@ -69,9 +69,9 @@ public class BasicAttack : MonoBehaviour
     {
         while (_isAttacking)
         {
+            yield return new WaitForSeconds(_meleeData.AttackCooldown);
             GetMouseDirection();
             yield return StartCoroutine(_meleeAttack.PerformAttack(_meleeData));
-            yield return new WaitForSeconds(_meleeData.AttackCooldown);
         }
     }
 
@@ -79,9 +79,9 @@ public class BasicAttack : MonoBehaviour
     {
         while (_isAttacking)
         {
+            yield return new WaitForSeconds(_rangedData.AttackCooldown);
             _rangedData.TargetDirection = GetMouseDirection();
             yield return StartCoroutine(_rangedAttack.PerformAttack(_rangedData));
-            yield return new WaitForSeconds(_rangedData.AttackCooldown);
         }
     }
 

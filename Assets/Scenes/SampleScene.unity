@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 59497901}
   - component: {fileID: 59497900}
   m_Layer: 7
-  m_Name: MeleeHitbox
+  m_Name: Jester_SquareHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,12 +316,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59497898}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.50000006, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1805123961}
+  m_Father: {fileID: 1188532038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &59497900
 MonoBehaviour:
@@ -466,6 +466,135 @@ MonoBehaviour:
   _selectMenu: {fileID: 393155183}
   _enemySpawner: {fileID: 866617361}
   _pauseManager: {fileID: 1684291582}
+  _followCamera: {fileID: 699198802}
+--- !u!1 &108616050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108616051}
+  - component: {fileID: 108616054}
+  - component: {fileID: 108616053}
+  - component: {fileID: 108616052}
+  - component: {fileID: 108616055}
+  m_Layer: 7
+  m_Name: Jester_CircleHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &108616051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108616050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.50000006, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1188532038}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!23 &108616052
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108616050}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 001400376edd0514a89d41d410324c2a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &108616053
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108616050}
+  m_Mesh: {fileID: 8012563891942627399, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+--- !u!65 &108616054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108616050}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &108616055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108616050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ff80d7234fd794496fd16bc060adfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackHitbox
+  _damage: 1
+  _knockbackForce: 1
+  _knockbackOriginPoint: {fileID: 1805123961}
 --- !u!1 &145622805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,12 +1560,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: -25.88, y: 30, z: -10.27}
+  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 30, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2073005006}
+  m_Father: {fileID: 699198801}
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -1992,7 +2121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 466253531}
   m_Layer: 7
-  m_Name: ShootOrigin
+  m_Name: Jester_ShootOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2054,7 +2183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 587450750}
   m_Layer: 7
-  m_Name: Model
+  m_Name: Jester_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2184,9 +2313,7 @@ Transform:
   - {fileID: 100127758}
   - {fileID: 1805123961}
   - {fileID: 1350147114}
-  - {fileID: 783081451}
   - {fileID: 281050785}
-  - {fileID: 1748058920}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &601223330
@@ -2812,6 +2939,53 @@ MonoBehaviour:
   _damage: 1
   _knockbackForce: 1
   _knockbackOriginPoint: {fileID: 1350147114}
+--- !u!1 &699198800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 699198801}
+  - component: {fileID: 699198802}
+  m_Layer: 0
+  m_Name: PlayerFollower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &699198801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699198800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 330585546}
+  m_Father: {fileID: 2073005006}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &699198802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699198800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407958032f2f2624499b6aeab8e82f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowCamera
+  _followTransform: {fileID: 699198801}
+  _followPercentage: 0.01
 --- !u!1 &715965312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,6 +3275,7 @@ Transform:
   - {fileID: 235964734}
   - {fileID: 1684291581}
   - {fileID: 904365116}
+  - {fileID: 783081451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &783081450
@@ -3114,7 +3289,7 @@ GameObject:
   - component: {fileID: 783081451}
   - component: {fileID: 783081452}
   m_Layer: 0
-  m_Name: PlayerInput
+  m_Name: man_PlayerInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3128,12 +3303,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783081450}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 598873765}
+  m_Father: {fileID: 779747568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &783081452
 MonoBehaviour:
@@ -3190,8 +3365,8 @@ MonoBehaviour:
     m_ActionName: 'Walking/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+      - m_Target: {fileID: 1350147130}
+        m_TargetAssemblyTypeName: BasicAttack, Assembly-CSharp
         m_MethodName: OnAttackingToggled
         m_Mode: 0
         m_Arguments:
@@ -3202,8 +3377,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+      - m_Target: {fileID: 1805123969}
+        m_TargetAssemblyTypeName: BasicAttack, Assembly-CSharp
         m_MethodName: OnAttackingToggled
         m_Mode: 0
         m_Arguments:
@@ -3219,6 +3394,18 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1350147124}
+        m_TargetAssemblyTypeName: AbilityUse, Assembly-CSharp
+        m_MethodName: OnAbility1Use
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1805123972}
         m_TargetAssemblyTypeName: AbilityUse, Assembly-CSharp
         m_MethodName: OnAbility1Use
         m_Mode: 0
@@ -3246,6 +3433,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1805123972}
+        m_TargetAssemblyTypeName: AbilityUse, Assembly-CSharp
+        m_MethodName: OnAbility2Use
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3f068150-9991-488e-bc32-e82b9822aee7
     m_ActionName: 'Walking/Ability2[/Keyboard/e]'
   - m_PersistentCalls:
@@ -3262,13 +3461,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 0d918daa-9ee9-42f2-af87-0cee804df6a9
-    m_ActionName: 'Walking/Ability3[/Keyboard/r]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1350147124}
+      - m_Target: {fileID: 1805123972}
         m_TargetAssemblyTypeName: AbilityUse, Assembly-CSharp
-        m_MethodName: TestInptu
+        m_MethodName: OnAbility3Use
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3278,6 +3473,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_ActionId: 0d918daa-9ee9-42f2-af87-0cee804df6a9
+    m_ActionName: 'Walking/Ability3[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
     m_ActionId: 7922c090-d010-47f2-96e3-a89d90aff9ac
     m_ActionName: 'Walking/testInput[/Keyboard/h]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -3611,7 +3810,7 @@ GameObject:
   - component: {fileID: 866617360}
   - component: {fileID: 866617361}
   m_Layer: 0
-  m_Name: man_enemySpawner
+  m_Name: man_EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4250,6 +4449,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 779747568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1154962655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154962656}
+  - component: {fileID: 1154962658}
+  - component: {fileID: 1154962657}
+  m_Layer: 7
+  m_Name: Jester_CircleIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1154962656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154962655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.50000006, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1188532038}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!23 &1154962657
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154962655}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ef0431ecb6c893b4e80f1215902e6ae5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1154962658
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154962655}
+  m_Mesh: {fileID: 8012563891942627399, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
 --- !u!1 &1167108874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4308,6 +4597,54 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+--- !u!1 &1176947124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176947126}
+  - component: {fileID: 1176947125}
+  m_Layer: 0
+  m_Name: Proj_Jester_Banana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1176947125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176947124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dc704e54e52bb4cac32ca6a0741116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  OwnerID: 0
+  _damage: 0
+  _projectileBaseSpeed: 1
+  _lifeTime: 5
+--- !u!4 &1176947126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176947124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1185310232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4411,6 +4748,41 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1188532037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1188532038}
+  m_Layer: 7
+  m_Name: Jester_MeleeHitboxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1188532038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188532037}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 59497899}
+  - {fileID: 1556123231}
+  - {fileID: 108616051}
+  - {fileID: 1154962656}
+  m_Father: {fileID: 1805123961}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1221059548
 GameObject:
   m_ObjectHideFlags: 0
@@ -4873,6 +5245,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Move
   _baseMoveSpeed: 5
+  _isUsingScateMovement: 1
+  _timeBetweenScates: 0.3
+  _scateData:
+    ScateTime: 1
+    ScateSpeed: 3
+    TurnAngle: 1
+    Forward: {x: 0, y: 0, z: 0}
 --- !u!65 &1350147118
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4933,8 +5312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcdd53b315962704281651b1fc8724c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileAability
+  AbilityName: 
   AbilityCooldown: 5
   _rangedData:
+    ProjectileTypeID: 0
     ProjectileAmount: 5
     DelayBetweenShots: 0
     ProjectileDamage: 2
@@ -4992,6 +5373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e521c476d929a94b969d03acba60a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpinAbility
+  AbilityName: 
   AbilityCooldown: 4
   _spinRadius: 5
   _spinSpeed: 50
@@ -5012,6 +5394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bfaff662883ab4f90d3df40456c3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JesterUlt
+  AbilityName: 
   AbilityCooldown: 10
   _minDamage: 1
   _maxDamage: 10
@@ -5025,7 +5408,8 @@ MonoBehaviour:
   _hitboxShape: 1
   _hitboxPositionOffset: {x: 0, y: 0, z: 0}
   _attack: {fileID: 1350147129}
-  _jesterUlt: {fileID: 2006079706}
+  _hitboxIndicator: {fileID: 738756702}
+  _idicatorParent: {fileID: 0}
   _characterMovement: {fileID: 1350147117}
 --- !u!114 &1350147128
 MonoBehaviour:
@@ -5084,6 +5468,7 @@ MonoBehaviour:
   _meleeAttack: {fileID: 1350147129}
   _hasRangedAttack: 0
   _rangedData:
+    ProjectileTypeID: 0
     ProjectileAmount: 0
     DelayBetweenShots: 0
     ProjectileDamage: 0
@@ -5632,6 +6017,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 434139683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1556123230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1556123231}
+  - component: {fileID: 1556123233}
+  - component: {fileID: 1556123232}
+  m_Layer: 7
+  m_Name: Jester_SquareIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1556123231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556123230}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.50000006, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1188532038}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1556123232
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556123230}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ef0431ecb6c893b4e80f1215902e6ae5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1556123233
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556123230}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1607216754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5766,7 +6241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e38c4c12e7320f418d1fae04e76dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
-  _pooledObject: {fileID: -5720127139243783999, guid: ebbfeb6e6517530479acd81c2f8e336c, type: 3}
+  _pooledObjects:
+  - {fileID: -5720127139243783999, guid: ebbfeb6e6517530479acd81c2f8e336c, type: 3}
   _startingPoolSize: 10
   _parentTransform: {fileID: 568296901}
 --- !u!1 &1684291580
@@ -5952,7 +6428,7 @@ GameObject:
   - component: {fileID: 1748058920}
   - component: {fileID: 1748058921}
   m_Layer: 0
-  m_Name: PlayerProjectilePool
+  m_Name: Jester_ProjectilePool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5966,12 +6442,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748058919}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.64, y: -0.92, z: -1.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 598873765}
+  m_Father: {fileID: 1805123961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1748058921
 MonoBehaviour:
@@ -5985,7 +6461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e38c4c12e7320f418d1fae04e76dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
-  _pooledObject: {fileID: -3556833128422538383, guid: 6a7db915eb3f8b44390e199b70132475, type: 3}
+  _pooledObjects:
+  - {fileID: -3556833128422538383, guid: 6a7db915eb3f8b44390e199b70132475, type: 3}
   _startingPoolSize: 10
   _parentTransform: {fileID: 281050785}
 --- !u!1 &1785888771
@@ -6195,7 +6672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1805123961
 Transform:
   m_ObjectHideFlags: 0
@@ -6211,7 +6688,8 @@ Transform:
   m_Children:
   - {fileID: 587450750}
   - {fileID: 466253531}
-  - {fileID: 59497899}
+  - {fileID: 1748058920}
+  - {fileID: 1188532038}
   m_Father: {fileID: 598873765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1805123962
@@ -6227,6 +6705,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Move
   _baseMoveSpeed: 5
+  _isUsingScateMovement: 0
+  _timeBetweenScates: 0.3
+  _scateData:
+    ScateTime: 0
+    ScateSpeed: 0
+    TurnAngle: 0
+    Forward: {x: 0, y: 0, z: 0}
 --- !u!65 &1805123963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6343,6 +6828,7 @@ MonoBehaviour:
   _meleeAttack: {fileID: 1805123970}
   _hasRangedAttack: 1
   _rangedData:
+    ProjectileTypeID: 0
     ProjectileAmount: 3
     DelayBetweenShots: 0
     ProjectileDamage: 1
@@ -6372,9 +6858,9 @@ MonoBehaviour:
   OnAttackSwing:
     m_PersistentCalls:
       m_Calls: []
-  _squareAttackHitbox: {fileID: 0}
-  _circleAttackHitbox: {fileID: 0}
-  _hitboxParent: {fileID: 59497899}
+  _squareAttackHitbox: {fileID: 59497900}
+  _circleAttackHitbox: {fileID: 108616055}
+  _hitboxParent: {fileID: 1188532038}
 --- !u!114 &1805123971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6387,7 +6873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bfaff662883ab4f90d3df40456c3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JesterUlt
-  AbilityCooldown: 30
+  AbilityName: Jack In The Box
+  AbilityCooldown: 5
   _minDamage: 0
   _maxDamage: 5
   _minRadius: 1
@@ -6399,9 +6886,10 @@ MonoBehaviour:
   _cooldownTime: 0.3
   _hitboxShape: 1
   _hitboxPositionOffset: {x: 0, y: 0, z: 0}
-  _attack: {fileID: 0}
-  _jesterUlt: {fileID: 0}
-  _characterMovement: {fileID: 0}
+  _attack: {fileID: 1805123970}
+  _hitboxIndicator: {fileID: 1154962655}
+  _idicatorParent: {fileID: 1188532038}
+  _characterMovement: {fileID: 1805123962}
 --- !u!114 &1805123972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6418,7 +6906,7 @@ MonoBehaviour:
   _basicAttack: {fileID: 1805123969}
   _abilities:
   - {fileID: 1805123974}
-  - {fileID: 0}
+  - {fileID: 1805123973}
   - {fileID: 1805123971}
   _ability1Timer: {fileID: 11400000, guid: cbd26af2a05fa784ebd0f9c1a6db4028, type: 2}
   _ability2Timer: {fileID: 11400000, guid: 169b014b5ecbe574db37b0c9a3492a48, type: 2}
@@ -6435,20 +6923,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcdd53b315962704281651b1fc8724c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileAbility
-  AbilityCooldown: 0
+  AbilityName: Banana Peel
+  AbilityCooldown: 7
   _rangedData:
-    ProjectileAmount: 0
+    ProjectileTypeID: 0
+    ProjectileAmount: 1
     DelayBetweenShots: 0
     ProjectileDamage: 0
     ProjectileSpreadAngle: 0
-    MinProjectileSpeed: 0
-    MaxProjectileSpeed: 0
+    MinProjectileSpeed: 5
+    MaxProjectileSpeed: 5
     PierceAmount: 0
-    ProjectileScale: {x: 0, y: 0, z: 0}
+    ProjectileScale: {x: 1, y: 1, z: 1}
     TargetDirection: {x: 0, y: 0, z: 0}
     AttackCooldown: 0
   _hasMeleeHitbox: 0
-  _doesFireOnMeleeSwing: 1
+  _doesFireOnMeleeSwing: 0
   _meleeAttackData:
     Damage: 0
     HitboxScale: {x: 0, y: 0}
@@ -6458,9 +6948,9 @@ MonoBehaviour:
     ActiveTime: 0
     WinddownTime: 0
     AttackCooldown: 0
-  _shootOrigin: {fileID: 0}
-  _rangedAttack: {fileID: 0}
-  _meleeAttack: {fileID: 0}
+  _shootOrigin: {fileID: 466253531}
+  _rangedAttack: {fileID: 1805123968}
+  _meleeAttack: {fileID: 1805123970}
 --- !u!114 &1805123974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6473,8 +6963,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcdd53b315962704281651b1fc8724c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileAbility
+  AbilityName: Cake Throw
   AbilityCooldown: 5
   _rangedData:
+    ProjectileTypeID: 0
     ProjectileAmount: 1
     DelayBetweenShots: 0
     ProjectileDamage: 1
@@ -7210,9 +7702,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 699198801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2097832033
@@ -7262,3 +7754,4 @@ SceneRoots:
   - {fileID: 380371218}
   - {fileID: 2042300948}
   - {fileID: 1017817795}
+  - {fileID: 1176947126}
