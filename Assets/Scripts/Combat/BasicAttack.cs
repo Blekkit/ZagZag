@@ -21,7 +21,7 @@ public class BasicAttack : MonoBehaviour
     [Header("Other References")]
     [SerializeField] private MousePosition _mousePosProvider;
     [SerializeField] private CharacterRotation _charRotation;
-    [SerializeField] private Transform _torsoTransform;
+    [SerializeField] private Transform _playerCenterTransform;
 
     private bool _isAttacking = true;
 
@@ -60,8 +60,8 @@ public class BasicAttack : MonoBehaviour
 
     private Vector3 GetMouseDirection()
     {
-        Vector3 mouseDirection = _mousePosProvider.GetMouseDirection(_torsoTransform.position);
-        _charRotation.RotateTorso(mouseDirection);
+        Vector3 mouseDirection = _mousePosProvider.GetMouseDirection(_playerCenterTransform.position);
+        _charRotation.RotateBodyPart(mouseDirection, EPlayerBodyPart.torso);
         return mouseDirection;
     }
 
@@ -87,10 +87,10 @@ public class BasicAttack : MonoBehaviour
 
     private void Awake()
     {
-        if (_torsoTransform == null)
+        if (_playerCenterTransform == null)
         {
-            _torsoTransform = transform;
-            Debug.LogWarning($"No character transform specified on basic attack of {gameObject.name}. Using base transform {_torsoTransform}");
+            _playerCenterTransform = transform;
+            Debug.LogWarning($"No character transform specified on basic attack of {gameObject.name}. Using base transform {_playerCenterTransform.gameObject.name}");
         }
     }
 }

@@ -8,6 +8,9 @@ public class MeleeAttackData
     public Vector2 HitboxScale;
     public EHitboxShape HitboxShape;
     public Vector3 AttackPositionOffset;
+    public Vector3 HitboxRotation;
+
+    public bool DoesUpdateHitboxPosition;
 
     public float WindupTime;
     public float ActiveTime;

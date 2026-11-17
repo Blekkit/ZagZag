@@ -7,7 +7,7 @@ public abstract class UsableAbility : MonoBehaviour
 
     [SerializeField] private int AbilityCooldown;
 
-    public bool IsUsingAbility {  get; protected set; }
+    //public bool IsUsingAbility {  get; protected set; }
 
     protected bool _isHoldingButton = false;
 

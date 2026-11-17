@@ -28,7 +28,7 @@ public class JesterUlt : UsableAbility
 
     public override IEnumerator UseAbility(Vector3 targetPosition)
     {
-        IsUsingAbility = true;
+        //IsUsingAbility = true;
         _isHoldingButton = true;
 
         float chargeTimer = 0f;
@@ -58,7 +58,7 @@ public class JesterUlt : UsableAbility
 
         //_hitboxIndicator.transform.localScale = new Vector3(1, 1, 1);
         _characterMovement.ResetSpeed();
-        IsUsingAbility = false;
+        //IsUsingAbility = false;
     }
 
     private void Start()
