@@ -54,7 +54,6 @@ public class JesterUlt : UsableAbility
         _attackData.Damage = (int)currentDamage;
         _attackData.HitboxScale = new Vector2(currentRadius, currentRadius);
         _hitboxIndicator.SetActive(false);
-        
         yield return StartCoroutine(_attack.PerformAttack(_attackData));
 
         //_hitboxIndicator.transform.localScale = new Vector3(1, 1, 1);
@@ -72,4 +71,3 @@ public class JesterUlt : UsableAbility
         _attackData.AttackPositionOffset = _hitboxPositionOffset;
     }
 }
-//todo: dmg fix
