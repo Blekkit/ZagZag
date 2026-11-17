@@ -50,7 +50,24 @@ public class MeleeAttack : MonoBehaviour
         //attack active step        DAMAGE STEP
         currentHitbox.gameObject.SetActive(true);
         OnAttackSwing?.Invoke();
-        yield return new WaitForSeconds(data.ActiveTime);
+
+        //moving active hitbox
+        if (data.DoesUpdateHitboxPosition)
+        {
+            float elapsedTime = 0f;
+            while (elapsedTime < data.ActiveTime)
+            {
+                _hitboxParent.localPosition = data.AttackPositionOffset;
+                _hitboxParent.rotation = Quaternion.Euler(data.HitboxRotation);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+        //stationary active hitbox
+        else
+        {
+            yield return new WaitForSeconds(data.ActiveTime);
+        }
         
         //attack cooldown step
         currentHitbox.gameObject.SetActive(false);
@@ -59,6 +76,7 @@ public class MeleeAttack : MonoBehaviour
         //after attack finished
         CanAttack = true;
         _hitboxParent.localPosition = Vector3.zero;
+        _hitboxParent.localRotation = Quaternion.identity;
     }
 
 

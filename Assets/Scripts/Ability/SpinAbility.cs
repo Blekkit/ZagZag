@@ -3,41 +3,33 @@ using UnityEngine;
 
 public class SpinAbility : UsableAbility
 {
-    [SerializeField] private float _spinRadius;
     [SerializeField] private float _spinSpeed;
-    [SerializeField] private float _spinAmount;
-    [SerializeField] private int _spinDamage;
 
-    [Header("References")]
-    [SerializeField] private Transform _hitboxTransform;
+    [Header("Melle Attack Settings")]
+    [SerializeField] private MeleeAttack _meleeAttack;
+    [SerializeField] private MeleeAttackData _attackData;
+
+    [SerializeField] private Transform _placeholderTransform;
     [SerializeField] private Transform _spinCenter;
-    [SerializeField] private AttackHitbox _spinHitbox;
 
     public override IEnumerator UseAbility(Vector3 targetPosition)
     {
-        IsUsingAbility = true;
-
         float spinAngle = 0f;
-        float spinCounter = 0f;
+        float spinTimer = 0f;
 
-        _hitboxTransform.gameObject.SetActive(true);
+        StartCoroutine(_meleeAttack.PerformAttack(_attackData));
 
-        while (spinCounter / 360 < _spinAmount)
+        while (spinTimer < _attackData.ActiveTime)
         {
-            spinAngle += _spinSpeed * Time.deltaTime;
-            _hitboxTransform.RotateAround(_spinCenter.position, Vector3.up, spinAngle);
-            spinCounter += spinAngle;
+            spinAngle = _spinSpeed * Time.deltaTime;
+            
+            _placeholderTransform.RotateAround(_spinCenter.position, Vector3.up, spinAngle);
+            _attackData.AttackPositionOffset = _placeholderTransform.localPosition;
+            _attackData.HitboxRotation = _placeholderTransform.localEulerAngles;
+            
+            spinTimer += Time.deltaTime;
             yield return null;
         }
-
-        _hitboxTransform.gameObject.SetActive(false);
-        IsUsingAbility = false;
         yield return null;
-    }
-
-    private void Awake()
-    {
-        _hitboxTransform.localScale = new Vector3(_hitboxTransform.localScale.x, _hitboxTransform.localScale.y, _spinRadius);
-        _spinHitbox.SetDamage(_spinDamage);
     }
 }

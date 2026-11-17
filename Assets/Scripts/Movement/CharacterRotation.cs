@@ -4,32 +4,57 @@ public class CharacterRotation : MonoBehaviour
 {
     [SerializeField] private Transform _torsoTransform;
     [SerializeField] private Transform _legsTransform;
+    [SerializeField] private Transform _weaponTransform;
 
-    public void RotateTorso(float rotationYAngle)
+    /// <summary>
+    /// Rotates a body part by an angle around the Y-axis.
+    /// </summary>
+    /// <param name="rotationYAngle">the y rotation angle</param>
+    /// <param name="bodyPart">the body part to rotate</param>
+    public void RotateBodyPart(float rotationYAngle, EPlayerBodyPart bodyPart)
     {
-        _torsoTransform.Rotate(0, rotationYAngle, 0);
+        Transform targetTransform = GetTransformByBodyPart(bodyPart);
+        targetTransform.Rotate(0, rotationYAngle, 0);
     }
 
-    public void RotateTorso(Vector3 lookDirection)
+    /// <summary>
+    /// rotates a body part to look in a direction
+    /// </summary>
+    /// <param name="lookDirection">the direction to look in</param>
+    /// <param name="bodyPart">the body part to rotate</param>
+    public void RotateBodyPart(Vector3 lookDirection, EPlayerBodyPart bodyPart)
     {
-        //Vector3 lookVector = new Vector3(lookDirection.x, 0, lookDirection.y);
+        Transform targetTransform = GetTransformByBodyPart(bodyPart);
         lookDirection.y = 0;
-        _torsoTransform.rotation = Quaternion.LookRotation(lookDirection);
+        targetTransform.rotation = Quaternion.LookRotation(lookDirection);
     }
 
-    public void RotateLegs(float rotationYAngle)
+    public Vector3 GetBodyPartForward(EPlayerBodyPart bodyPart, out Vector3 forward)
     {
-        _legsTransform.Rotate(0, rotationYAngle, 0);
+        Transform targetTransform = GetTransformByBodyPart(bodyPart);
+        forward = targetTransform.forward;
+        return forward;
     }
 
-    public void LookAt(Vector3 lookAtPosition)
-    {
-        lookAtPosition.y = 1;
-        _torsoTransform.LookAt(lookAtPosition);
-    }
+    //public void LookAt(Vector3 lookAtPosition)
+    //{
+    //    lookAtPosition.y = 1;
+    //    _torsoTransform.LookAt(lookAtPosition);
+    //}
 
-    private void Start()
+    /// <summary>
+    /// gets the transform of the specified body part
+    /// </summary>
+    /// <param name="bodyPart">the body part to get the transform of</param>
+    /// <returns>the transform of the specified body part</returns>
+    private Transform GetTransformByBodyPart(EPlayerBodyPart bodyPart)
     {
-        //_torsoTransform = transform;
+        return bodyPart switch
+        {
+            EPlayerBodyPart.legs => _legsTransform,
+            EPlayerBodyPart.torso => _torsoTransform,
+            EPlayerBodyPart.weapon => _weaponTransform,
+            _ => _legsTransform,
+        };
     }
 }

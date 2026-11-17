@@ -8,6 +8,7 @@ public class AbilityUse : MonoBehaviour
     [Header("References")]
     [SerializeField] private MousePosition _mousePositionProvider;
     [SerializeField] private BasicAttack _basicAttack;
+    [SerializeField] private CharacterRotation _rotation;
 
     [Header("Abilities")]
     [SerializeField] private List<UsableAbility> _abilities;
@@ -75,7 +76,7 @@ public class AbilityUse : MonoBehaviour
     {
         _isUsingAbility = true;
         _basicAttack.PauseBasicAttacks();
-        yield return StartCoroutine(ability.UseAbility(_mousePositionProvider.GetMousePosition()));
+        yield return StartCoroutine(ability.UseAbility(GetMousePosition()));
         _basicAttack.ResumeBasicAttacks();
         _isUsingAbility = false;
         yield return StartCoroutine(DoCooldown(abilityCooldownTimer, ability.GetCooldown()));
@@ -92,6 +93,12 @@ public class AbilityUse : MonoBehaviour
         }
 
         cooldownTimer.SetValue(ZERO);
+    }
+
+    private Vector3 GetMousePosition()
+    {
+        _rotation.RotateBodyPart(_mousePositionProvider.GetMouseDirection(transform.position), EPlayerBodyPart.torso);
+        return _mousePositionProvider.GetMousePosition();
     }
 
     private void Awake()

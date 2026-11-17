@@ -8,5 +8,5 @@ public struct ScateData
     public float ScateSpeed;
     public float TurnAngle;
     public float SpeedLossRate;
-    public Vector3 Forward;
+    //public Vector3 Forward;
 }

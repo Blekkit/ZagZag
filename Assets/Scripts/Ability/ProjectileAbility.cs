@@ -1,8 +1,5 @@
 using System.Collections;
-//using System.Collections.Generic;
-//using TMPro;
 using UnityEngine;
-//using UnityEngine.UIElements;
 
 public class ProjectileAbility : UsableAbility
 {
@@ -23,7 +20,7 @@ public class ProjectileAbility : UsableAbility
 
     public override IEnumerator UseAbility(Vector3 targetPosition)
     {
-        IsUsingAbility = true;
+        //IsUsingAbility = true;
         _targetPosition = targetPosition;
 
         //melee windup
@@ -50,7 +47,7 @@ public class ProjectileAbility : UsableAbility
             }
         }
 
-        IsUsingAbility = false;
+        //IsUsingAbility = false;
         yield return null;
     }
 
