@@ -8,13 +8,6 @@ public class RangedAttack : MonoBehaviour
 
     public bool CanAttack { get; private set; } = true;
 
-    //private int _projectileTypeID = 0;
-
-    //public void SetProjectileType(int projectileTypeID)
-    //{
-    //    _projectileTypeID = projectileTypeID;
-    //}
-
     public void CancelAttack()
     {
         StopAllCoroutines();
@@ -34,7 +27,16 @@ public class RangedAttack : MonoBehaviour
                 projectile.SetDamage(data.ProjectileDamage);
                 projectile.SetPierceAmount(data.PierceAmount);
                 projectile.SetScale(data.ProjectileScale);
-                float speed = Random.Range(data.MinProjectileSpeed, data.MaxProjectileSpeed);
+
+                float speed = 0f;
+                if (data.MinProjectileSpeed == data.MaxProjectileSpeed)
+                {
+                    speed = data.MinProjectileSpeed;
+                }
+                else
+                {
+                    speed = Random.Range(data.MinProjectileSpeed, data.MaxProjectileSpeed);
+                }
                 
                 //handle fire direction
                 Vector3 direction = data.TargetDirection;
