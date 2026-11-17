@@ -2,28 +2,34 @@ using UnityEngine;
 
 public class CharacterRotation : MonoBehaviour
 {
-    private Transform _tf;
+    [SerializeField] private Transform _torsoTransform;
+    [SerializeField] private Transform _legsTransform;
 
-    public void Rotate(float rotationYAngle)
+    public void RotateTorso(float rotationYAngle)
     {
-        _tf.Rotate(0, rotationYAngle, 0);
+        _torsoTransform.Rotate(0, rotationYAngle, 0);
     }
 
-    public void Rotate(Vector3 lookDirection)
+    public void RotateTorso(Vector3 lookDirection)
     {
         //Vector3 lookVector = new Vector3(lookDirection.x, 0, lookDirection.y);
         lookDirection.y = 0;
-        transform.rotation = Quaternion.LookRotation(lookDirection);
+        _torsoTransform.rotation = Quaternion.LookRotation(lookDirection);
+    }
+
+    public void RotateLegs(float rotationYAngle)
+    {
+        _legsTransform.Rotate(0, rotationYAngle, 0);
     }
 
     public void LookAt(Vector3 lookAtPosition)
     {
         lookAtPosition.y = 1;
-        _tf.LookAt(lookAtPosition);
+        _torsoTransform.LookAt(lookAtPosition);
     }
 
     private void Start()
     {
-        _tf = transform;
+        //_torsoTransform = transform;
     }
 }

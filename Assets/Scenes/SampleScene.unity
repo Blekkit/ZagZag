@@ -476,7 +476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 108616051}
-  - component: {fileID: 108616054}
+  - component: {fileID: 108616056}
   - component: {fileID: 108616053}
   - component: {fileID: 108616052}
   - component: {fileID: 108616055}
@@ -559,8 +559,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108616050}
   m_Mesh: {fileID: 8012563891942627399, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
---- !u!65 &108616054
-BoxCollider:
+--- !u!114 &108616055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108616050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ff80d7234fd794496fd16bc060adfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackHitbox
+  _damage: 1
+  _knockbackForce: 1
+  _knockbackOriginPoint: {fileID: 1805123961}
+--- !u!64 &108616056
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -577,24 +592,10 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &108616055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108616050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ff80d7234fd794496fd16bc060adfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AttackHitbox
-  _damage: 1
-  _knockbackForce: 1
-  _knockbackOriginPoint: {fileID: 1805123961}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8012563891942627399, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
 --- !u!1 &145622805
 GameObject:
   m_ObjectHideFlags: 0
@@ -5232,6 +5233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f29b122208f1e4449bcb43c48578885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterRotation
+  _torsoTransform: {fileID: 1876880969}
+  _legsTransform: {fileID: 1350147114}
 --- !u!114 &1350147117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5246,12 +5249,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Move
   _baseMoveSpeed: 5
   _isUsingScateMovement: 1
-  _timeBetweenScates: 0.3
+  _timeBetweenScates: 0
+  _rotationAngleRounding: 0.1
   _scateData:
-    ScateTime: 1
-    ScateSpeed: 3
+    ScateTime: 1.5
+    ScateSpeed: 6
     TurnAngle: 1
+    SpeedLossRate: 2
     Forward: {x: 0, y: 0, z: 0}
+  _playerRB: {fileID: 1350147119}
+  _legsTransform: {fileID: 1350147114}
 --- !u!65 &1350147118
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5482,7 +5489,7 @@ MonoBehaviour:
   _rangedAttack: {fileID: 1350147128}
   _mousePosProvider: {fileID: 235964735}
   _charRotation: {fileID: 1350147116}
-  _transform: {fileID: 1350147114}
+  _torsoTransform: {fileID: 1876880969}
 --- !u!1 &1375559770
 GameObject:
   m_ObjectHideFlags: 0
@@ -6707,11 +6714,15 @@ MonoBehaviour:
   _baseMoveSpeed: 5
   _isUsingScateMovement: 0
   _timeBetweenScates: 0.3
+  _rotationAngleRounding: 0.1
   _scateData:
     ScateTime: 0
     ScateSpeed: 0
     TurnAngle: 0
+    SpeedLossRate: 0
     Forward: {x: 0, y: 0, z: 0}
+  _playerRB: {fileID: 0}
+  _legsTransform: {fileID: 0}
 --- !u!65 &1805123963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6772,6 +6783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f29b122208f1e4449bcb43c48578885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterRotation
+  _torsoTransform: {fileID: 0}
+  _legsTransform: {fileID: 0}
 --- !u!114 &1805123967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6842,7 +6855,7 @@ MonoBehaviour:
   _rangedAttack: {fileID: 1805123968}
   _mousePosProvider: {fileID: 235964735}
   _charRotation: {fileID: 1805123966}
-  _transform: {fileID: 1805123961}
+  _torsoTransform: {fileID: 0}
 --- !u!114 &1805123970
 MonoBehaviour:
   m_ObjectHideFlags: 0
