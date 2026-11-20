@@ -4,10 +4,11 @@ using System.Collections.Generic;
 public class CharacterSelect : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _players;
-    [SerializeField] private GameObject _selectMenu;
     [SerializeField] private EnemySpawning _enemySpawner;
-    [SerializeField] private GamePause _pauseManager;
     [SerializeField] private FollowCamera _followCamera;
+    [SerializeField] private MenuManager _menuManager;
+    //[SerializeField] private GameObject _selectMenu;
+    //[SerializeField] private GamePause _pauseManager;
 
     private Transform _playerTF;
     private BasicAttack _playerBasicAttack;
@@ -30,9 +31,9 @@ public class CharacterSelect : MonoBehaviour
             }
         }
 
-        _pauseManager.UnpauseGame();
-
-        _selectMenu.SetActive(false);
+        _menuManager.CloseMenus();
+        //_pauseManager.UnpauseGame();
+        //_selectMenu.SetActive(false);
 
         if (_playerTF != null)
         {
@@ -48,10 +49,10 @@ public class CharacterSelect : MonoBehaviour
             playerMovement.StartScateLoop();
     }
 
-    private void Start()
-    {
-        _pauseManager.PauseGame();
-    }
+    //private void Start()
+    //{
+    //    _pauseManager.PauseGame();
+    //}
 }
 
 //todo: reference manager?
