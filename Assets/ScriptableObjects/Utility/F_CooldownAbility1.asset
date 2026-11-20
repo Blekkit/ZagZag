@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7381681285c3377489c086eae97cc62c, type: 3}
-  m_Name: Ability2Cooldown
+  m_Name: F_CooldownAbility1
   m_EditorClassIdentifier: Assembly-CSharp::FloatValue
   OnValueChanged:
     m_PersistentCalls:
