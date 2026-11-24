@@ -1,20 +1,28 @@
+using System.Collections;
 using UnityEngine;
 
 public class JesterBanana : ProjectileBase
 {
-    private int _damage;
-    private int _pierceAmount;
-    private float _lifeTime;
+    //[SerializeField] float _speedFalloff = 1f;
+    //[SerializeField] float _stopRounding = 0.1f;
 
-    public override void Fire(ProjectileData data)
+    public override void Fire()
     {
-        _tf.localScale = data.Scale;
-        _damage = data.Damage;
-        _pierceAmount = data.PierceAmount;
-        _lifeTime = data.LifeTime;
-
-        Vector3 moveVector = data.FireDirection.normalized * data.Speed;
+        Vector3 moveVector = new Vector3(_projectileData.FireDirection.x, 0, _projectileData.FireDirection.y);
+        moveVector.Normalize();
+        moveVector *= _projectileData.Speed;
 
         _rb.AddForce(moveVector, ForceMode.Impulse);
+
+        base.Fire();
     }
+
+    //private IEnumerator SpeedFalloff()
+    //{
+    //    while (_rb.linearVelocity.agnitude > _stopRounding)
+    //    {
+    //        _rb.linearVelocity.
+    //        yield return null;
+    //    }
+    //}
 }

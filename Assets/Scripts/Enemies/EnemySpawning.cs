@@ -47,6 +47,7 @@ public class EnemySpawning : MonoBehaviour
     {
         Vector3 spawnPosition = Vector3.zero;
         bool validPositionFound = false;
+        
         while (!validPositionFound)
         {
             float randomDistance = Random.Range(_minDistanceFromCenter, _maxDistanceFromCenter);
@@ -59,8 +60,14 @@ public class EnemySpawning : MonoBehaviour
                 validPositionFound = true;
             }
         }
+
         _randomSpawnPosHolder.position = spawnPosition;
-        _enemyPool.GetObjectFromPool(_randomSpawnPosHolder, EnemyTypeID);
+        GameObject enemyObj = _enemyPool.GetObjectFromPool(_randomSpawnPosHolder, EnemyTypeID);
+        
+        if (enemyObj.TryGetComponent<EnemyBehavior>(out EnemyBehavior enemyBehavior))
+        {
+            enemyBehavior.SetPlayerTF(_playerTF);
+        }
     }
 
     private void SpawnEnemyFixed()

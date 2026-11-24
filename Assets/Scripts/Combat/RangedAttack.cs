@@ -21,13 +21,9 @@ public class RangedAttack : MonoBehaviour
         for (int i = 0; i < data.ProjectileAmount; i++)
         {
             GameObject projectileObject = _projectilePool.GetObjectFromPool(_shootOrigin, data.ProjectileTypeID);
-            if (projectileObject.TryGetComponent<Projectile>(out Projectile projectile))
+            if (projectileObject.TryGetComponent<ProjectileBase>(out ProjectileBase projectile))
             {
-                //setup projectile stats
-                projectile.SetDamage(data.ProjectileDamage);
-                projectile.SetPierceAmount(data.PierceAmount);
-                projectile.SetScale(data.ProjectileScale);
-
+                //handle projectile speed
                 float speed = 0f;
                 if (data.MinProjectileSpeed == data.MaxProjectileSpeed)
                 {
@@ -37,15 +33,19 @@ public class RangedAttack : MonoBehaviour
                 {
                     speed = Random.Range(data.MinProjectileSpeed, data.MaxProjectileSpeed);
                 }
-                
+                data.ProjectileData.Speed = speed;
+
                 //handle fire direction
                 Vector3 direction = data.TargetDirection;
                 direction.Normalize();
                 direction = Quaternion.Euler(0, Random.Range(-data.ProjectileSpreadAngle, data.ProjectileSpreadAngle), 0) * direction;
                 Vector2 dir = new Vector2(direction.x, direction.z);
-                
+                data.ProjectileData.FireDirection = dir;
+
+                projectile.Initialise(data.ProjectileData);
+
                 //fire fire fire!
-                projectile.Fire(dir, speed);
+                projectile.Fire();
             }
 
             yield return new WaitForSeconds(data.DelayBetweenShots);
