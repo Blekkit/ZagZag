@@ -29,10 +29,10 @@ public class CharacterRotation : MonoBehaviour
         targetTransform.rotation = Quaternion.LookRotation(lookDirection);
     }
 
-    public Vector3 GetBodyPartForward(EPlayerBodyPart bodyPart, out Vector3 forward)
+    public Vector3 GetBodyPartForward(EPlayerBodyPart bodyPart)
     {
         Transform targetTransform = GetTransformByBodyPart(bodyPart);
-        forward = targetTransform.forward;
+        Vector3 forward = targetTransform.forward;
         return forward;
     }
 

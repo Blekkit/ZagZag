@@ -71,9 +71,10 @@ public class Move : MonoBehaviour
         while (scateTimer <= data.ScateTime)
         {
             scateTimer += Time.deltaTime;
-            
+
             //apply force
-            _playerRB.linearVelocity = _charRotation.GetBodyPartForward(EPlayerBodyPart.legs, out Vector3 forward) * scateSpeed;
+            Vector3 forward = _charRotation.GetBodyPartForward(EPlayerBodyPart.legs);
+            _playerRB.linearVelocity = forward * scateSpeed;
             scateSpeed -= data.SpeedLossRate * Time.deltaTime;
 
             //rotate player
@@ -86,6 +87,8 @@ public class Move : MonoBehaviour
             _charRotation.RotateBodyPart(turnAngle * Time.deltaTime, EPlayerBodyPart.legs);
             yield return null;
         }
+
+        _canMove = true;
     }
 
     public IEnumerator ScateMovementLoop()
@@ -107,8 +110,13 @@ public class Move : MonoBehaviour
     {
         if (!_isUsingScateMovement && _canMove)
         {
+            //movement
             Vector3 move = new Vector3(_moveInput.x, 0f, _moveInput.y) * _currentMoveSpeed * Time.deltaTime;
             transform.Translate(move, Space.World);
+            
+            //rotation
+            float turnAngle = Vector3.SignedAngle(_charRotation.GetBodyPartForward(EPlayerBodyPart.legs), move, Vector3.up);
+            _charRotation.RotateBodyPart(turnAngle, EPlayerBodyPart.legs);
         }
     }
 

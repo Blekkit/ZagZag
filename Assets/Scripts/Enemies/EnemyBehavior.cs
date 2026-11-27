@@ -42,7 +42,6 @@ public class EnemyBehavior : PoolableObject
         Vector3 direction = GetPlayerDirection();
         Vector2 dir = new Vector2(direction.x, direction.z);
         _enemyMove.SetMoveInput(dir.normalized);
-        //transform.position += direction * _moveSpeed * Time.deltaTime;
     }
 
     private void OnCollisionStay(Collision collision)

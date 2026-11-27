@@ -58,8 +58,8 @@ public abstract class ProjectileBase : PoolableObject
         //effect
         if (collider.gameObject.TryGetComponent<EffectManager>(out EffectManager effectManager))
         {
-            //Debug.Log("Applying effect to " + collider.gameObject.name);
-            StartCoroutine(effectManager.ApplyEffect(_projectileData.EffectData));
+            effectManager.StartEffect(_projectileData.EffectData);
+            //StartCoroutine(effectManager.ApplyEffect(_projectileData.EffectData));
         }
 
         //damage

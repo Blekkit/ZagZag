@@ -8662,7 +8662,7 @@ MonoBehaviour:
       LifeTime: 0
       Scale: {x: 0, y: 0, z: 0}
       FireDirection: {x: 0, y: 0}
-      Effect:
+      EffectData:
         EffectType: 0
         EffectDuration: 0
         EffectStrength: 0
@@ -8842,7 +8842,7 @@ MonoBehaviour:
       LifeTime: 0
       Scale: {x: 0, y: 0, z: 0}
       FireDirection: {x: 0, y: 0}
-      Effect:
+      EffectData:
         EffectType: 0
         EffectDuration: 0
         EffectStrength: 0
@@ -11127,6 +11127,8 @@ GameObject:
   - component: {fileID: 1805123971}
   - component: {fileID: 1805123974}
   - component: {fileID: 1805123973}
+  - component: {fileID: 1805123976}
+  - component: {fileID: 1805123975}
   m_Layer: 7
   m_Name: '- Player_Jester_Object -'
   m_TagString: Player
@@ -11304,7 +11306,7 @@ MonoBehaviour:
       LifeTime: 5
       Scale: {x: 1, y: 1, z: 1}
       FireDirection: {x: 0, y: 0}
-      Effect:
+      EffectData:
         EffectType: 0
         EffectDuration: 0
         EffectStrength: 0
@@ -11417,7 +11419,7 @@ MonoBehaviour:
       LifeTime: 30
       Scale: {x: 1, y: 1, z: 1}
       FireDirection: {x: 0, y: 0}
-      Effect:
+      EffectData:
         EffectType: 3
         EffectDuration: 2
         EffectStrength: 1
@@ -11425,7 +11427,7 @@ MonoBehaviour:
         ScateData:
           ScateTime: 2
           ScateSpeed: 5
-          TurnAngle: 1
+          TurnAngle: 0.3
           SpeedLossRate: 0.1
     ProjectileTypeID: 2
     ProjectileAmount: 1
@@ -11473,7 +11475,7 @@ MonoBehaviour:
       LifeTime: 5
       Scale: {x: 1, y: 1, z: 1}
       FireDirection: {x: 0, y: 0}
-      Effect:
+      EffectData:
         EffectType: 1
         EffectDuration: 4
         EffectStrength: 3
@@ -11507,6 +11509,36 @@ MonoBehaviour:
   _shootOrigin: {fileID: 466253531}
   _rangedAttack: {fileID: 1805123968}
   _meleeAttack: {fileID: 1805123970}
+--- !u!114 &1805123975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805123960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5f18eac0bcf0e49be0573f27f2a890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealth: 10
+  _isEnemy: 0
+  _playerScore: {fileID: 11400000, guid: f1cb6a3b155ff104a94596fb72899e74, type: 2}
+--- !u!114 &1805123976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805123960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fd35cea5fd03c44ba44eb413cb1f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  _entityMovement: {fileID: 1805123962}
+  _entityHealth: {fileID: 1805123975}
+  _entityMinSlowedSpeed: 0.1
 --- !u!1 &1824365408
 GameObject:
   m_ObjectHideFlags: 0

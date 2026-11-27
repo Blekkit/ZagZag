@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 314058911382800985}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.397, y: 1.54, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.2, z: 0.7}
+  m_LocalPosition: {x: 0, y: 1.54, z: 0.4}
+  m_LocalScale: {x: 0.7, y: 0.2, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8185394808857180564}
@@ -356,6 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectManager
   _entityMovement: {fileID: 7475703348057934196}
   _entityHealth: {fileID: -7351418321635416727}
+  _entityMinSlowedSpeed: 0.1
 --- !u!114 &7475703348057934196
 MonoBehaviour:
   m_ObjectHideFlags: 0

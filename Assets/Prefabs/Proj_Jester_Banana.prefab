@@ -138,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfc189c1b073564cace8f98927b5e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JesterBanana
+  _inactiveTime: 0.1
+  _collider: {fileID: 3458261819626862777}
 --- !u!65 &3458261819626862777
 BoxCollider:
   m_ObjectHideFlags: 0

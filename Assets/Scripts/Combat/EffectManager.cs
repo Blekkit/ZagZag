@@ -7,9 +7,14 @@ public class EffectManager : MonoBehaviour
     [SerializeField] private Health _entityHealth;
     [SerializeField] private float _entityMinSlowedSpeed = 0.1f;
 
-    public IEnumerator ApplyEffect(EffectData data)
+    public void StartEffect(EffectData data)
     {
-        Debug.Log($"Applying effect {data.EffectType} to entity {gameObject.name}");
+        StartCoroutine(ApplyEffect(data));
+    }
+
+    private IEnumerator ApplyEffect(EffectData data)
+    {
+        Debug.Log($"Applying effect {data.EffectType} for {data.EffectDuration} to entity {gameObject.name}");
 
         if (data.EffectType == EEffect.none)
         {
@@ -18,28 +23,29 @@ public class EffectManager : MonoBehaviour
 
         if (data.EffectType == EEffect.scating)
         {
-            _entityMovement.Scate(data.ScateData);
+            StartCoroutine(_entityMovement.Scate(data.ScateData));
             yield break;
         }
 
         float effectTimer = 0f;
-        float tickTimer = 0f;
 
         OnEffectStart(data);
 
-        while (effectTimer <= data.EffectDuration)
+        while(effectTimer <= data.EffectDuration)
         {
             effectTimer += Time.deltaTime;
-            if (data.EffectTickRate % tickTimer == 0)
+            Debug.Log(effectTimer);
+            if (data.EffectTickRate % effectTimer == 0)
             {
                 OnEffectTick(data);
             }
-            yield return null;
+
+            yield return new WaitForEndOfFrame();
         }
 
         OnEffectEnd(data);
+        yield return null;
     }
-
 
     private void OnEffectStart(EffectData data)
     {
@@ -47,7 +53,6 @@ public class EffectManager : MonoBehaviour
         {
             case EEffect.slow:
                 float slowedSpeed = Mathf.Max(_entityMovement.GetCurrentMoveSpeed() - data.EffectStrength, _entityMinSlowedSpeed);
-                Debug.Log($"Slowed entity {gameObject.name} to speed: {slowedSpeed}");
                 _entityMovement.SetTempSpeed(slowedSpeed);
                 break;
         }
