@@ -20,24 +20,17 @@ public class ProjectileAbility : UsableAbility
 
     public override IEnumerator UseAbility(Vector3 targetPosition)
     {
-        //IsUsingAbility = true;
         _targetPosition = targetPosition;
 
-        //melee windup
-        if (!_hasMeleeHitbox)
+        //fire immediately
+        if (!_hasMeleeHitbox || !_doesFireOnMeleeSwing)
         {
             StartCoroutine(FireProjectilesOverTime());
         }
+        //fire on melee swing
         else
         {
-            if (!_doesFireOnMeleeSwing)
-            {
-                StartCoroutine(FireProjectilesOverTime());
-            }
-            else
-            {
-                _meleeAttack.OnAttackSwing.AddListener(FireProjectiles);
-            }
+            _meleeAttack.OnAttackSwing.AddListener(FireProjectiles);
 
             yield return StartCoroutine(_meleeAttack.PerformAttack(_meleeAttackData));
 
@@ -47,7 +40,6 @@ public class ProjectileAbility : UsableAbility
             }
         }
 
-        //IsUsingAbility = false;
         yield return null;
     }
 
@@ -56,7 +48,10 @@ public class ProjectileAbility : UsableAbility
         for (int i = 0; i < _rangedData.ProjectileAmount; i++)
         {
             Vector3 direction = _targetPosition - _shootOrigin.position;
-            _rangedData.TargetDirection = direction.normalized;
+            _rangedData.TargetDirection = direction;
+            //direction.Normalize();
+            //Vector2 dir = new Vector2(direction.x, direction.z);
+            //_rangedData.ProjectileData.FireDirection = dir;
             StartCoroutine(_rangedAttack.PerformAttack(_rangedData));
         }
     }
@@ -66,7 +61,11 @@ public class ProjectileAbility : UsableAbility
         for (int i = 0; i < _rangedData.ProjectileAmount; i++)
         {
             Vector3 direction = _targetPosition - _shootOrigin.position;
-            direction.Normalize();
+            _rangedData.TargetDirection = direction;
+            //direction.Normalize();
+            //Vector2 dir = new Vector2(direction.x, direction.z);
+            //_rangedData.ProjectileData.FireDirection = dir;
+            //Debug.Log($"Firing projectile {i + 1}/{_rangedData.ProjectileAmount} towards {dir}");
             StartCoroutine(_rangedAttack.PerformAttack(_rangedData));
             yield return new WaitForSeconds(_rangedData.DelayBetweenShots);
         }

@@ -1553,8 +1553,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8079691665549258724, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: -8079691665549258724, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -6453539226615156867, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: -6453539226615156867, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1569,8 +1577,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 01ea40fd002a19d4b989bccb8abd759d, type: 2}
     - target: {fileID: -5398875802511270469, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: -5398875802511270469, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -5107194154067933520, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: -5107194154067933520, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1589,8 +1605,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 01ea40fd002a19d4b989bccb8abd759d, type: 2}
     - target: {fileID: -3400400017092551474, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: -3400400017092551474, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -1677848607568726807, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: -1677848607568726807, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1601,8 +1625,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 01ea40fd002a19d4b989bccb8abd759d, type: 2}
     - target: {fileID: -1371445110577560737, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: -1371445110577560737, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -1309730542591912547, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: -1309730542591912547, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1617,6 +1649,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 01ea40fd002a19d4b989bccb8abd759d, type: 2}
     - target: {fileID: 704744836579395001, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 704744836579395001, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1625,8 +1661,16 @@ PrefabInstance:
       value: Arena
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270045901381780565, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 1270045901381780565, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1640,9 +1684,25 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: fadadf9833752b145a2329cc8e1763c2, type: 2}
+    - target: {fileID: 2489159159464621496, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489159159464621496, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489159159464621496, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2550463727306718371, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057194824697141932, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 3057194824697141932, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1653,8 +1713,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 01ea40fd002a19d4b989bccb8abd759d, type: 2}
     - target: {fileID: 3730802876876280542, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730802876876280542, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233574176640161816, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 4233574176640161816, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1673,6 +1741,10 @@ PrefabInstance:
       value: -10.2
       objectReference: {fileID: 0}
     - target: {fileID: 5043947991047686294, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043947991047686294, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1680,6 +1752,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 01ea40fd002a19d4b989bccb8abd759d, type: 2}
+    - target: {fileID: 6309324144594941027, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 6309324144594941027, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -1709,8 +1785,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: d727b5d3d2c995d4898c111012624df8, type: 2}
     - target: {fileID: 8860203521353445797, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860203521353445797, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041940069312623838, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 9041940069312623838, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4544,7 +4628,7 @@ GameObject:
   - component: {fileID: 765803408}
   m_Layer: 0
   m_Name: Wall_Hitbox_Left
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5507,7 +5591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
   _pooledObjects:
-  - {fileID: -3556833128422538383, guid: 6a7db915eb3f8b44390e199b70132475, type: 3}
+  - {fileID: 7459649933573863829, guid: 6a7db915eb3f8b44390e199b70132475, type: 3}
   _startingPoolSize: 10
   _parentTransform: {fileID: 281050785}
 --- !u!1 &904365115
@@ -5953,7 +6037,7 @@ GameObject:
   - component: {fileID: 1017560798}
   m_Layer: 0
   m_Name: Wall_Hitbox_Right
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7171,54 +7255,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: d91b6ad1797750f45b83a522e5e0d528, type: 3}
---- !u!1 &1176947124
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1176947126}
-  - component: {fileID: 1176947125}
-  m_Layer: 0
-  m_Name: Proj_Jester_Banana
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1176947125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176947124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6dc704e54e52bb4cac32ca6a0741116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  OwnerID: 0
-  _damage: 0
-  _projectileBaseSpeed: 1
-  _lifeTime: 5
---- !u!4 &1176947126
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176947124}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1185310232
 GameObject:
   m_ObjectHideFlags: 0
@@ -7582,7 +7618,7 @@ GameObject:
   - component: {fileID: 1258671008}
   m_Layer: 0
   m_Name: Wall_Hitbox_Front
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8619,15 +8655,29 @@ MonoBehaviour:
   AbilityName: Briefcase Swing
   AbilityCooldown: 5
   _rangedData:
+    ProjectileData:
+      Damage: 0
+      PierceAmount: 0
+      Speed: 0
+      LifeTime: 0
+      Scale: {x: 0, y: 0, z: 0}
+      FireDirection: {x: 0, y: 0}
+      EffectData:
+        EffectType: 0
+        EffectDuration: 0
+        EffectStrength: 0
+        EffectTickRate: 0
+        ScateData:
+          ScateTime: 0
+          ScateSpeed: 0
+          TurnAngle: 0
+          SpeedLossRate: 0
     ProjectileTypeID: 0
     ProjectileAmount: 5
     DelayBetweenShots: 0
-    ProjectileDamage: 2
     ProjectileSpreadAngle: 20
     MinProjectileSpeed: 10
     MaxProjectileSpeed: 20
-    PierceAmount: 2
-    ProjectileScale: {x: 1, y: 1, z: 1}
     TargetDirection: {x: 0, y: 0, z: 0}
     AttackCooldown: 1
   _hasMeleeHitbox: 1
@@ -8785,15 +8835,29 @@ MonoBehaviour:
   _meleeAttack: {fileID: 1350147129}
   _hasRangedAttack: 0
   _rangedData:
+    ProjectileData:
+      Damage: 0
+      PierceAmount: 0
+      Speed: 0
+      LifeTime: 0
+      Scale: {x: 0, y: 0, z: 0}
+      FireDirection: {x: 0, y: 0}
+      EffectData:
+        EffectType: 0
+        EffectDuration: 0
+        EffectStrength: 0
+        EffectTickRate: 0
+        ScateData:
+          ScateTime: 0
+          ScateSpeed: 0
+          TurnAngle: 0
+          SpeedLossRate: 0
     ProjectileTypeID: 0
     ProjectileAmount: 0
     DelayBetweenShots: 0
-    ProjectileDamage: 0
     ProjectileSpreadAngle: 0
     MinProjectileSpeed: 0
     MaxProjectileSpeed: 0
-    PierceAmount: 0
-    ProjectileScale: {x: 0, y: 0, z: 0}
     TargetDirection: {x: 0, y: 0, z: 0}
     AttackCooldown: 0
   _rangedAttack: {fileID: 1350147128}
@@ -10332,7 +10396,7 @@ GameObject:
   - component: {fileID: 1694496626}
   m_Layer: 0
   m_Name: Wall_Hitbox_Back
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10698,7 +10762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
   _pooledObjects:
-  - {fileID: -3556833128422538383, guid: 6a7db915eb3f8b44390e199b70132475, type: 3}
+  - {fileID: 7459649933573863829, guid: 6a7db915eb3f8b44390e199b70132475, type: 3}
+  - {fileID: 4679686335668555518, guid: 9ac84e9a6d04639459fdda04593a6ebb, type: 3}
+  - {fileID: 531558276323103673, guid: 9402b10134a80d1419ea0f4cabee40e8, type: 3}
   _startingPoolSize: 10
   _parentTransform: {fileID: 281050785}
 --- !u!1 &1766268496
@@ -11061,6 +11127,8 @@ GameObject:
   - component: {fileID: 1805123971}
   - component: {fileID: 1805123974}
   - component: {fileID: 1805123973}
+  - component: {fileID: 1805123976}
+  - component: {fileID: 1805123975}
   m_Layer: 7
   m_Name: '- Player_Jester_Object -'
   m_TagString: Player
@@ -11231,15 +11299,29 @@ MonoBehaviour:
   _meleeAttack: {fileID: 1805123970}
   _hasRangedAttack: 1
   _rangedData:
+    ProjectileData:
+      Damage: 1
+      PierceAmount: 0
+      Speed: 3
+      LifeTime: 5
+      Scale: {x: 1, y: 1, z: 1}
+      FireDirection: {x: 0, y: 0}
+      EffectData:
+        EffectType: 0
+        EffectDuration: 0
+        EffectStrength: 0
+        EffectTickRate: 0
+        ScateData:
+          ScateTime: 0
+          ScateSpeed: 0
+          TurnAngle: 0
+          SpeedLossRate: 0
     ProjectileTypeID: 0
     ProjectileAmount: 3
     DelayBetweenShots: 0
-    ProjectileDamage: 1
     ProjectileSpreadAngle: 10
     MinProjectileSpeed: 4
     MaxProjectileSpeed: 6
-    PierceAmount: 0
-    ProjectileScale: {x: 1, y: 1, z: 1}
     TargetDirection: {x: 0, y: 0, z: 0}
     AttackCooldown: 1
   _rangedAttack: {fileID: 1805123968}
@@ -11330,15 +11412,29 @@ MonoBehaviour:
   AbilityName: Banana Peel
   AbilityCooldown: 7
   _rangedData:
-    ProjectileTypeID: 0
+    ProjectileData:
+      Damage: 0
+      PierceAmount: 0
+      Speed: 4
+      LifeTime: 30
+      Scale: {x: 1, y: 1, z: 1}
+      FireDirection: {x: 0, y: 0}
+      EffectData:
+        EffectType: 3
+        EffectDuration: 2
+        EffectStrength: 1
+        EffectTickRate: 0
+        ScateData:
+          ScateTime: 2
+          ScateSpeed: 5
+          TurnAngle: 0.3
+          SpeedLossRate: 0.1
+    ProjectileTypeID: 2
     ProjectileAmount: 1
     DelayBetweenShots: 0
-    ProjectileDamage: 0
     ProjectileSpreadAngle: 0
     MinProjectileSpeed: 5
     MaxProjectileSpeed: 5
-    PierceAmount: 0
-    ProjectileScale: {x: 1, y: 1, z: 1}
     TargetDirection: {x: 0, y: 0, z: 0}
     AttackCooldown: 0
   _hasMeleeHitbox: 0
@@ -11372,15 +11468,29 @@ MonoBehaviour:
   AbilityName: Cake Throw
   AbilityCooldown: 5
   _rangedData:
-    ProjectileTypeID: 0
+    ProjectileData:
+      Damage: 0
+      PierceAmount: 0
+      Speed: 4
+      LifeTime: 5
+      Scale: {x: 1, y: 1, z: 1}
+      FireDirection: {x: 0, y: 0}
+      EffectData:
+        EffectType: 1
+        EffectDuration: 4
+        EffectStrength: 3
+        EffectTickRate: 0
+        ScateData:
+          ScateTime: 0
+          ScateSpeed: 0
+          TurnAngle: 0
+          SpeedLossRate: 0
+    ProjectileTypeID: 1
     ProjectileAmount: 1
     DelayBetweenShots: 0
-    ProjectileDamage: 1
     ProjectileSpreadAngle: 0
     MinProjectileSpeed: 10
     MaxProjectileSpeed: 10
-    PierceAmount: 0
-    ProjectileScale: {x: 2, y: 1, z: 2}
     TargetDirection: {x: 0, y: 0, z: 0}
     AttackCooldown: 0
   _hasMeleeHitbox: 0
@@ -11399,6 +11509,36 @@ MonoBehaviour:
   _shootOrigin: {fileID: 466253531}
   _rangedAttack: {fileID: 1805123968}
   _meleeAttack: {fileID: 1805123970}
+--- !u!114 &1805123975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805123960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5f18eac0bcf0e49be0573f27f2a890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealth: 10
+  _isEnemy: 0
+  _playerScore: {fileID: 11400000, guid: f1cb6a3b155ff104a94596fb72899e74, type: 2}
+--- !u!114 &1805123976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805123960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fd35cea5fd03c44ba44eb413cb1f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectManager
+  _entityMovement: {fileID: 1805123962}
+  _entityHealth: {fileID: 1805123975}
+  _entityMinSlowedSpeed: 0.1
 --- !u!1 &1824365408
 GameObject:
   m_ObjectHideFlags: 0
@@ -13355,4 +13495,3 @@ SceneRoots:
   - {fileID: 444000215}
   - {fileID: 380371218}
   - {fileID: 1017817795}
-  - {fileID: 1176947126}

@@ -15,7 +15,14 @@ public abstract class PoolableObject : MonoBehaviour
     public void ReturnToPool()
     {
         if (_originPool != null)
+        {
             _originPool.ReturnObjectToPool(this);
+        }
+        else
+        {
+            Debug.LogWarning($"Projectile {gameObject.name} is trying to return to unassigned pool. Destroying projectile GameObject...");
+            Destroy(this.gameObject);
+        }
     }
 
     public GameObject GetGameObject()

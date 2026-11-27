@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class EnemyBehavior : PoolableObject
 {
-    [SerializeField] private float _moveSpeed = 2f;
+    //[SerializeField] private float _moveSpeed = 2f;
     [SerializeField] private int _contactDamage = 1;
+    [SerializeField] private Move _enemyMove;
 
     private Transform _playerTransform;
+
+    public void SetPlayerTF(Transform playerTransform)
+    {
+        _playerTransform = playerTransform;
+    }
 
     private Vector3 GetPlayerDirection()
     {
@@ -19,22 +25,23 @@ public class EnemyBehavior : PoolableObject
         return direction;
     }
 
-    private void Awake()
-    {
-        if (_playerTransform == null)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                _playerTransform = player.transform;
-            }
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (_playerTransform == null)
+    //    {
+    //        GameObject player = GameObject.FindGameObjectWithTag("Player");
+    //        if (player != null)
+    //        {
+    //            _playerTransform = player.transform;
+    //        }
+    //    }
+    //}
 
     private void Update()
     {
         Vector3 direction = GetPlayerDirection();
-        transform.position += direction * _moveSpeed * Time.deltaTime;
+        Vector2 dir = new Vector2(direction.x, direction.z);
+        _enemyMove.SetMoveInput(dir.normalized);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -43,7 +50,6 @@ public class EnemyBehavior : PoolableObject
         {
             if (pHealth.CanBeDamaged)
                 pHealth.TakeDamage(_contactDamage);
-        }
-        
+        } 
     }
 }

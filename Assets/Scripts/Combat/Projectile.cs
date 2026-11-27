@@ -1,16 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class Projectile : PoolableObject
+public abstract class Projectile : PoolableObject
 {
+    //old code
+
     public int OwnerID;
 
-    [SerializeField] private int _damage = 0;
     [SerializeField] private float _projectileBaseSpeed = 1;
     [SerializeField] private float _lifeTime = 5f;
 
     public int PierceAmount { get; private set; } = 0;
 
+    private int _damage = 0;
     private float _lifeTimer = 0;
     private Rigidbody _rb;
 
@@ -87,9 +89,4 @@ public class Projectile : PoolableObject
             Destroy();
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-        
-    //}
 }

@@ -15,7 +15,6 @@ public class Move : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Rigidbody _playerRB;
-    //[SerializeField] private Transform _legsTransform;
     [SerializeField] private CharacterRotation _charRotation;
 
     public bool IsUsingScateMovement => _isUsingScateMovement;
@@ -31,6 +30,11 @@ public class Move : MonoBehaviour
     }
 
     #region setters
+    public void SetMoveInput(Vector2 moveInput)
+    {
+        _moveInput = moveInput;
+    }
+
     public void SetMoveSpeedModifier(float speedModidfier)
     {
         _currentMoveSpeed *= speedModidfier;
@@ -51,11 +55,15 @@ public class Move : MonoBehaviour
         _isMoving = false;
         StopCoroutine(ScateMovementLoop());
     }
+
+    public float GetCurrentMoveSpeed()
+    {
+        return _currentMoveSpeed;
+    }
     #endregion
 
     public IEnumerator Scate(ScateData data)
     {
-        //Debug.Log($"Scate started by {gameObject.name}");
         float scateTimer = 0;
         float turnAngle = 0;
         float scateSpeed = data.ScateSpeed;
@@ -63,9 +71,10 @@ public class Move : MonoBehaviour
         while (scateTimer <= data.ScateTime)
         {
             scateTimer += Time.deltaTime;
-            
+
             //apply force
-            _playerRB.linearVelocity = _charRotation.GetBodyPartForward(EPlayerBodyPart.legs, out Vector3 forward) * scateSpeed;
+            Vector3 forward = _charRotation.GetBodyPartForward(EPlayerBodyPart.legs);
+            _playerRB.linearVelocity = forward * scateSpeed;
             scateSpeed -= data.SpeedLossRate * Time.deltaTime;
 
             //rotate player
@@ -76,12 +85,10 @@ public class Move : MonoBehaviour
             turnAngle *= data.TurnAngle;
 
             _charRotation.RotateBodyPart(turnAngle * Time.deltaTime, EPlayerBodyPart.legs);
-            //_legsTransform.Rotate(Vector3.up, turnAngle * Time.deltaTime);
-            
-            //data.Forward = Quaternion.AngleAxis(data.TurnAngle, Vector3.up) * data.Forward;
             yield return null;
         }
-        //Debug.Log($"Scate ended by {gameObject.name}");
+
+        _canMove = true;
     }
 
     public IEnumerator ScateMovementLoop()
@@ -103,8 +110,13 @@ public class Move : MonoBehaviour
     {
         if (!_isUsingScateMovement && _canMove)
         {
+            //movement
             Vector3 move = new Vector3(_moveInput.x, 0f, _moveInput.y) * _currentMoveSpeed * Time.deltaTime;
             transform.Translate(move, Space.World);
+            
+            //rotation
+            float turnAngle = Vector3.SignedAngle(_charRotation.GetBodyPartForward(EPlayerBodyPart.legs), move, Vector3.up);
+            _charRotation.RotateBodyPart(turnAngle, EPlayerBodyPart.legs);
         }
     }
 
